@@ -37,6 +37,7 @@ set cursorline
 set ignorecase
 set updatetime=100
 set hidden
+setlocal scrolloff=9999
 filetype plugin on
 
 " Indentation default
