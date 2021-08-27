@@ -7,7 +7,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/nerd-fonts'
 Plug 'ryanoasis/vim-devicons'
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
@@ -24,8 +23,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat' 
 Plug 'tommcdo/vim-exchange'
 Plug 'machakann/vim-highlightedyank'
-Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
-Plug 'iamcco/coc-diagnostic'
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 call plug#end()
 " PLugins End
 "
@@ -162,6 +160,8 @@ let g:coc_global_extensions=[
             \'coc-docker' ,
             \'coc-highlight',
             \'coc-yaml',
+            \'coc-pyright',
+            \'coc-eslint'
             \]
 
 " Desfaz selecao apos busca
