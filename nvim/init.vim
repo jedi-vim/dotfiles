@@ -1,6 +1,7 @@
 " PLugins
 call plug#begin()
 Plug 'morhetz/gruvbox' 
+Plug 'sainnhe/gruvbox-material'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
@@ -46,7 +47,7 @@ set shiftwidth=4
 set softtabstop=4
 
 " Colo Scheme 
-colorscheme gruvbox
+colorscheme gruvbox-material
 syntax on
 let g:gruvbox_contrast_dark='soft'
 set termguicolors
