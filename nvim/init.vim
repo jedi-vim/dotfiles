@@ -200,6 +200,6 @@ nnoremap <C-w>= <C-w>5+
 nnoremap <C-w>, <C-w>5<
 nnoremap <C-w>. <C-w>5>
 
-" Toda a vez que pular para próxima palavra buscada o cursor fica no centro da tela
-nnoremap n nzzzv
-nnoremap N Nzzzv
+" Center the cursor vertically when moving to the next word during a search.
+nnoremap n nzz
+nnoremap N Nzz
