@@ -33,6 +33,7 @@ set number relativenumber
 set autoindent
 set incsearch
 set wildmenu
+set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 set confirm
 set title
 set cursorline
