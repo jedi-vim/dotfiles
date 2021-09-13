@@ -14,6 +14,7 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'preservim/NERDTree'
 Plug 'preservim/tagbar'
+Plug 't9md/vim-choosewin'
 Plug 'preservim/nerdcommenter'
 Plug 'airblade/vim-gitgutter'
 Plug 'Yggdroot/indentLine'
@@ -72,6 +73,10 @@ augroup numbertoggle
   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
+
+" ChooseWin
+nmap <leader>cw <Plug>(choosewin)
+let g:choosewin_overlay_enable = 1
 
 " Edit init.vim
 nnoremap <leader>ev :vsplit ~/.config/nvim/init.vim<cr>
