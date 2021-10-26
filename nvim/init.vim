@@ -65,10 +65,10 @@ autocmd VimEnter * source ~/.session.vim
 autocmd VimLeave * mksession! ~/.session.vim
 
 augroup CursorLine
-  au!
-  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  autocmd!
+  autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
   hi CursorLine term=bold cterm=bold guibg=Grey30
-  au WinLeave * setlocal nocursorline
+  autocmd WinLeave * setlocal nocursorline
 augroup END
 
 augroup numbertoggle
