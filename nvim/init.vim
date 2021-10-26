@@ -141,7 +141,9 @@ nnoremap <silent> <leader>g :Ag<CR>
 nnoremap <silent> <leader>h :History<CR>
 nnoremap <silent> <leader>t :Tags<CR>
 nnoremap <silent> <leader>bt :BTags<CR>
-nnoremap <silent> <leader>bc :GBranches<CR>
+nnoremap <silent> <leader>bc :BCommits<CR>
+nnoremap <silent> <leader>gb :GBranches<CR>
+
 " [Tags] Command to generate tags file
 let g:fzf_tags_command = 'ctags -R --exclude=.git --exclude=node_modules --exclude=django_cache exclude=static'
 " Excluindo diretorios que naturalmente nao precisam ser indexados
