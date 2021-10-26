@@ -40,6 +40,8 @@ set cursorline
 set ignorecase
 set updatetime=100
 set hidden
+set splitbelow
+set splitright
 setlocal scrolloff=9999
 filetype plugin on
 
