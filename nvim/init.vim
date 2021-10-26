@@ -147,8 +147,8 @@ nnoremap <silent> <leader>gb :GBranches<CR>
 " [Tags] Command to generate tags file
 let g:fzf_tags_command = 'ctags -R --exclude=.git --exclude=node_modules --exclude=django_cache --exclude=static'
 " Excluindo diretorios que naturalmente nao precisam ser indexados
-" let $FZF_DEFAULT_COMMAND =  \"find * -path '*/\.*' -prune -o -path 'node_modules/**' -prune -o -path 'dist/**' -prune -o  -type f -print -o -type l -print 2> /dev/null"
 let $FZF_DEFAULT_COMMAND="git ls-files --cached --others --exclude-standard || fd --type f --type l --hidden --follow"
+
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
 
