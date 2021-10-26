@@ -77,6 +77,10 @@ augroup numbertoggle
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
 
+augroup python_indent
+  autocmd!
+  autocmd BufReadPre,BufReadPost *.py setlocal foldmethod=indent foldnestmax=2
+
 " ChooseWin
 nmap <leader>cw <Plug>(choosewin)
 let g:choosewin_overlay_enable = 1
