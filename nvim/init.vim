@@ -203,8 +203,8 @@ vnoremap K :m '<-2<CR>gv=gv
 map <Tab> <C-W>w
 
 " Navegação entre buffers
-nnoremap  <C-Right> :bn<CR>
-nmap  <C-Left> :bp<CR>
+nnoremap  <C-S-l> :bn<CR>
+nnoremap  <C-S-a> :bp<CR>
 nmap  <leader>q :bd<CR>
 
 " Resize da janelas
