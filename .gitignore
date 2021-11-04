@@ -1,0 +1,15 @@
+# Specify filepatterns you want git to ignore.
+Microsoft/**
+Postman/**
+coc/**
+direnv/**
+discord/**
+evolution/**
+gcloud/logs/**
+libreoffice/**
+nvim/plugged/**
+spotify/**
+pulse/**
+transmission/**
+teams/**
+sublime-merge/**
