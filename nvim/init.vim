@@ -26,6 +26,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tommcdo/vim-exchange'
 Plug 'machakann/vim-highlightedyank'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'elixir-editors/vim-elixir'
 call plug#end()
 " PLugins End
 "
