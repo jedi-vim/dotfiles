@@ -5,7 +5,7 @@ coc/**
 direnv/**
 discord/**
 evolution/**
-gcloud/logs/**
+gcloud/**
 libreoffice/**
 nvim/plugged/**
 spotify/**
@@ -13,3 +13,6 @@ pulse/**
 transmission/**
 teams/**
 sublime-merge/**
+Code/**
+vlc/**
+tags
