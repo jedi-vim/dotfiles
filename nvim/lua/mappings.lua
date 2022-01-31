@@ -13,7 +13,7 @@ keymap("n", "<leader>ev", ":vsplit ~/.config/nvim/init.lua<cr>", {noremap = true
 keymap("n", "<leader>sv", ":source ~/.config/nvim/init.lua<cr>", {noremap = true})
 
 -- Copiar para o clip board
-keymap("v", "yy" , "+y", {silent = true})
+keymap("v", "yy" , '"+y', {silent = true, noremap = true })
 
 -- Atalho para mover blocos de texto
 keymap("v", "J", ":m '>+1<CR>gv=gv", {noremap = true})
