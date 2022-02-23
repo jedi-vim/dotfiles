@@ -29,7 +29,7 @@ local function on_attach(client, bufnr)
     { "n", "gD", [[<Cmd>lua vim.lsp.buf.declaration()<CR>]], opts },
     { "n", "gd", [[<Cmd>lua vim.lsp.buf.definition()<CR>]], opts },
     { "n", "gr", [[<Cmd>lua require('telescope.builtin').lsp_references({ path_display = 'shorten' })<CR>]], opts },
-    { "n", "gS", [[<Cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], {noremap = true, silent = true},},
+    { "n", "<leader>bt", [[<Cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], {noremap = true, silent = true},},
     { "n", "<leader>rn", [[<Cmd>lua vim.lsp.buf.rename()<CR>]], opts },
     { "i", "<C-x>", [[<Cmd>lua vim.lsp.buf.signature_help()<CR>]], opts },
     { "n", "]e", [[<Cmd>lua vim.lsp.diagnostic.goto_next()<CR>]], opts },
@@ -81,8 +81,8 @@ end
 
 -- lsp servers
 local required_servers = {
-  "gopls", -- golang
-  "sumneko_lua", -- lua
+  -- "gopls", -- golang
+  -- "sumneko_lua", -- lua
   "pyright", -- python
   "tsserver", -- js, jsx, tsx
   "bashls", -- bash
@@ -105,20 +105,20 @@ end
 local cfg = make_config()
 
 lsp_installer.on_server_ready(function(server)
-  if server.name == "sumneko_lua" then
-    local luadev = require("lua-dev").setup({
-      lspconfig = {
-        cmd = {
-          vim.fn.expand("~/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/Linux/lua-language-server"),
-        },
-        on_attach = cfg.on_attach,
-        capabilities = cfg.capabilities,
-      },
-    })
-    server:setup(luadev)
-  else
-    server:setup(cfg)
-  end
+  -- if server.name == "sumneko_lua" then
+  --   local luadev = require("lua-dev").setup({
+  --     lspconfig = {
+  --       cmd = {
+  --         vim.fn.expand("~/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/Linux/lua-language-server"),
+  --       },
+  --       on_attach = cfg.on_attach,
+  --       capabilities = cfg.capabilities,
+  --     },
+  --   })
+  --   server:setup(luadev)
+  -- else
+  server:setup(cfg)
+  -- end
   vim.cmd([[do User LspAttachBuffers]])
 end)
 

@@ -52,4 +52,4 @@ keymap("n", "<Esc><Esc>", ":<C-u>nohlsearch<CR>", {noremap = true})
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
-keymap( "n", "<F9>", ":Telescope file_browser<CR>", { noremap = true })
+

@@ -14,7 +14,7 @@ export PATH="$HOME/.poetry/bin/:$HOME/.local/bin/:$PATH"
 
 # Alias
 alias k=kubectl
-alias v=nvim
+alias v=nvim-0.6
 alias g=git
 alias tor="/opt/tor-browser_en-US/Browser/start-tor-browser -detach"
 
@@ -35,7 +35,3 @@ unset color_prompt force_color_prompt
 
 # Elixir: Iex History
 export ERL_AFLAGS="-kernel shell_history enabled"
-
-# Pastebin
-# login: jedi_vim
-# passwd: 6E6a#3Q9k5e%

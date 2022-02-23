@@ -23,9 +23,9 @@ vim.cmd([[
 
 return require("packer").startup(function(use)
   use {
-    'wbthomason/packer.nvim', 
+    'wbthomason/packer.nvim',
     opt=false
-  } 
+  }
   use 'tpope/vim-commentary' -- "gc" to comment visual regions/lines
   use 'mg979/vim-visual-multi' -- Multicursor
   use 'haya14busa/incsearch.vim' -- Increase search
@@ -34,7 +34,7 @@ return require("packer").startup(function(use)
 
   -- GruvBox Theme, the greatest
   use { 
-    'ellisonleao/gruvbox.nvim', 
+    'ellisonleao/gruvbox.nvim',
     requires = {"itchyny/lightline.vim"}
   }
   use({ "kyazdani42/nvim-web-devicons" })
@@ -46,40 +46,75 @@ return require("packer").startup(function(use)
     end,
   })
 
-
   -- UI to select things (files, grep results, open buffers...)
   use {
       "nvim-telescope/telescope.nvim",
-      requires = {"nvim-lua/plenary.nvim", "nvim-lua/popup.nvim", "nvim-telescope/telescope-file-browser.nvim"},
+      requires = {"nvim-lua/plenary.nvim", "nvim-lua/popup.nvim"},
       config = [[require("config.telescope")]],
   }
+  -- File tree explorer
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = {
+      'kyazdani42/nvim-web-devicons', -- optional, for file icon
+    },
+    config = function() require('config.nvim-tree') end
+}
   -- buffer tabs at top
   use({
     "akinsho/nvim-bufferline.lua",
-    config = function()
-      require("bufferline").setup({ options = { numbers = "both" } })
-    end,
+    config = function() require("bufferline").setup {} end,
   })
   -- -- Add git related info in the signs columns and popups
   use {
-    "lewis6991/gitsigns.nvim",
-    requires = {"nvim-lua/plenary.nvim"}
-  } 
-  -- use {
-  --   "nvim-treesitter/nvim-treesitter", 
-  --   requires = {
-  --     'nvim-treesitter/nvim-treesitter-refactor',
-  --     'nvim-treesitter/nvim-treesitter-textobjects',
-  --   },
-  --   run = "TSUpdate"
-  -- }
+    'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      require'gitsigns'.setup {
+        numhl = false,
+        linehl = false,
+        keymaps = {
+          -- Default keymap options
+          noremap = true,
+          buffer = true,
+
+          ['n ]g'] = { expr = true, "&diff ? ']c' : '<cmd>lua require\"gitsigns.actions\".next_hunk()<CR>'"},
+          ['n [g'] = { expr = true, "&diff ? '[c' : '<cmd>lua require\"gitsigns.actions\".prev_hunk()<CR>'"},
+
+          ['n <leader>ghu'] = '<cmd>lua require"gitsigns".reset_hunk()<CR>',
+          ['v ghu'] = '<cmd>lua require"gitsigns".reset_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>',
+          ['n ghp'] = '<cmd>lua require"gitsigns".preview_hunk()<CR>',
+
+          -- Text objects
+          -- ['o ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
+          -- ['x ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>'
+        },
+        current_line_blame = true,
+        current_line_blame_opts = {
+          delay = 0
+        }
+      }
+    end
+  }
+  -- Sintasse para várias linguagens
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+    config = function ()
+      require'nvim-treesitter.configs'.setup {
+        ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+        highlight = {
+          enable = true,              -- false will disable the whole extension
+        },
+      }
+    end
+  }
    use({ "folke/lua-dev.nvim" })   
    use {
      "neovim/nvim-lspconfig",
      requires = {"williamboman/nvim-lsp-installer"},
      config = [[require("config.lsp")]],
    }
-   
+
    use {
      "hrsh7th/nvim-cmp",
      config = function()

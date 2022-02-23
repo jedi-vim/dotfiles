@@ -20,13 +20,14 @@ opt.expandtab = true
 opt.shiftwidth = 4
 opt.softtabstop = 4
 
-
 -- Manter CWD com o arquivo aberto
---Manter cursor sempre no meio da tela
+-- Manter cursor sempre no meio da tela
 vim.cmd [[
-  autocmd BufEnter * silent! :lcd%:p:h
-  setlocal scrolloff=9999
-  filetype plugin on
+autocmd BufEnter * silent! :lcd%:p:h
+]]
+
+vim.cmd [[
+setlocal scrolloff=9999
 ]]
 
 -- Manter sessão

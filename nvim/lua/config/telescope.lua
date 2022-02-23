@@ -7,13 +7,16 @@ local mappings = {
   {"n", "<Leader>b", [[<Cmd>Telescope buffers<CR>]], opts},
   {"n", "<Leader>f", [[<Cmd>Telescope git_files<CR>]], opts},
   {"n", "<Leader>h", [[<Cmd>Telescope oldfiles<CR>]], opts},
+  {"n", "<F10>", [[<Cmd>Telescope help_tags<CR>]], opts},
   {"n", "<Leader>g", [[<Cmd>Telescope live_grep<CR>]], opts},
+  -- git
+  {"n", "<Leader>bc", [[<Cmd>Telescope git_bcommits<CR>]], opts},
+  -- Git Status
+  {"n", "<Leader>gs", [[<Cmd>Telescope git_status<CR>]], opts},
+  {"n", "<Leader>gb", [[<Cmd>Telescope git_branches<CR>]], opts},
+  -- tags 
   {"n", "<Leader>t", [[<Cmd>Telescope tags<CR>]], opts},
-  {"n", "<Leader>bt", [[<Cmd>Telescope current_buffer_tags<CR>]], opts},
-  {"n", "<F10>", [[<Cmd>Telescope help_tags<CR>]], opts}
 }
 for _, val in pairs(mappings) do
   vim.api.nvim_set_keymap(unpack(val))
 end
-
-require("telescope").load_extension "file_browser"
