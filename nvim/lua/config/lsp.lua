@@ -4,26 +4,6 @@ local servers = require("nvim-lsp-installer.servers")
 local function on_attach(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.lsp.omnifunc")
 
-  -- Lua
-  -- vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>Trouble<cr>",
-  --   {silent = true, noremap = true}
-  -- )
-  -- vim.api.nvim_set_keymap("n", "<leader>xw", "<cmd>Trouble lsp_workspace_diagnostics<cr>",
-  --   {silent = true, noremap = true}
-  -- )
-  -- vim.api.nvim_set_keymap("n", "<leader>xd", "<cmd>Trouble lsp_document_diagnostics<cr>",
-  --   {silent = true, noremap = true}
-  -- )
-  -- vim.api.nvim_set_keymap("n", "<leader>xl", "<cmd>Trouble loclist<cr>",
-  --   {silent = true, noremap = true}
-  -- )
-  -- vim.api.nvim_set_keymap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>",
-  --   {silent = true, noremap = true}
-  -- )
-  -- vim.api.nvim_set_keymap("n", "gR", "<cmd>Trouble lsp_references<cr>",
-  --   {silent = true, noremap = true}
-  -- )
-  --
   local opts = { silent = true, noremap = true }
   local mappings = {
     { "n", "gD", [[<Cmd>lua vim.lsp.buf.declaration()<CR>]], opts },
@@ -106,19 +86,7 @@ end
 local cfg = make_config()
 
 lsp_installer.on_server_ready(function(server)
-  -- if server.name == "sumneko_lua" then
-  --   local luadev = require("lua-dev").setup({
-  --     lspconfig = {
-  --       cmd = {
-  --         vim.fn.expand("~/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/Linux/lua-language-server"),
-  --       },
-  --       on_attach = cfg.on_attach,
-  --       capabilities = cfg.capabilities,
-  --     },
-  --   })
-  --   server:setup(luadev)
-  -- else
-  server:setup(cfg)
+        server:setup(cfg)
   -- end
   vim.cmd([[do User LspAttachBuffers]])
 end)
