@@ -112,6 +112,8 @@ return require("packer").startup(function(use)
    use {
      "neovim/nvim-lspconfig",
      requires = {"williamboman/nvim-lsp-installer"},
+         "j-hui/fidget.nvim",
+     },
      config = [[require("config.lsp")]],
    }
 
@@ -132,7 +134,17 @@ return require("packer").startup(function(use)
        "quangnguyen30192/cmp-nvim-ultisnips",
        "ray-x/cmp-treesitter",
        "saadparwaiz1/cmp_luasnip",
+       "onsails/lspkind-nvim",
      }}
+     -- lsp, completion, linting and snippets
+     use({ "jose-elias-alvarez/null-ls.nvim" })
+     use({
+         "folke/trouble.nvim",
+         config = function()
+             require("trouble").setup({})
+             vim.api.nvim_set_keymap("n", "<F8>", "<Cmd>Trouble document_diagnostics<CR>", { silent = true, noremap = true })
+         end,
+     })
 
      if packer_bootstrap then
         vim.notify("Installing plugins...")

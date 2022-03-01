@@ -1,5 +1,14 @@
 local lsp_installer = require("nvim-lsp-installer")
 local servers = require("nvim-lsp-installer.servers")
+require'fidget'.setup{
+  text = {
+    spinner = "dots",
+    done = "✅"
+  },
+  timer = {
+    fidget_decay = -1 -- Always show
+  }
+}
 
 local function on_attach(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.lsp.omnifunc")
