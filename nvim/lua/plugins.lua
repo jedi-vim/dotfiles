@@ -35,7 +35,6 @@ return require("packer").startup(function(use)
   -- GruvBox Theme, the greatest
   use { 
     'ellisonleao/gruvbox.nvim',
-    requires = {"itchyny/lightline.vim"}
   }
   use({ "kyazdani42/nvim-web-devicons" })
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines 
@@ -108,10 +107,13 @@ return require("packer").startup(function(use)
       }
     end
   }
-   use({ "folke/lua-dev.nvim" })   
+   use({ "folke/lua-dev.nvim" })
    use {
      "neovim/nvim-lspconfig",
-     requires = {"williamboman/nvim-lsp-installer"},
+     requires = {
+         "williamboman/nvim-lsp-installer",
+         "nvim-lua/lsp-status.nvim",
+         "ray-x/lsp_signature.nvim",
          "j-hui/fidget.nvim",
      },
      config = [[require("config.lsp")]],
@@ -145,6 +147,21 @@ return require("packer").startup(function(use)
              vim.api.nvim_set_keymap("n", "<F8>", "<Cmd>Trouble document_diagnostics<CR>", { silent = true, noremap = true })
          end,
      })
+     use {
+         'nvim-lualine/lualine.nvim',
+         requires = {
+		 {'kyazdani42/nvim-web-devicons', opt = true },
+                 {'nvim-lua/lsp-status.nvim' },
+	 },
+        config = function ()
+            local lsp_status = require('lsp-status')
+            require('lualine').setup{
+                sections = {
+                    lualine_x = { lsp_status.status(), 'encoding', 'fileformat', 'filetype' },
+                }
+            }
+	end
+     }
 
      if packer_bootstrap then
         vim.notify("Installing plugins...")

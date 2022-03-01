@@ -1,5 +1,10 @@
 local lsp_installer = require("nvim-lsp-installer")
 local servers = require("nvim-lsp-installer.servers")
+local lsp_signature = require('lsp_signature')
+
+local lsp_status = require('lsp-status')
+lsp_status.register_progress()
+
 require'fidget'.setup{
   text = {
     spinner = "dots",
@@ -48,7 +53,13 @@ local function on_attach(client, bufnr)
     augroup END
     ]])
   end
+  -- Lsp lsp_signature
+  lsp_signature.on_attach(client)
+  -- Lsp lsp_status
+  lsp_status.on_attach(client)
+
 end
+
 
 local function make_config()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -59,7 +70,7 @@ local function make_config()
   capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
   return {
     on_attach = on_attach,
-    capabilities = capabilities,
+    capabilities = vim.tbl_extend('keep', capabilities, lsp_status.capabilities),
     handlers = {
       ["textDocument/publishDiagnostics"] = vim.lsp.with(
         vim.lsp.diagnostic.on_publish_diagnostics,
@@ -71,8 +82,7 @@ end
 
 -- lsp servers
 local required_servers = {
-  -- "gopls", -- golang
-  -- "sumneko_lua", -- lua
+  "sumneko_lua", -- lua
   "pyright", -- python
   "tsserver", -- js, jsx, tsx
   "bashls", -- bash
