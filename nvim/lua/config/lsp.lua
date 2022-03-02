@@ -1,7 +1,5 @@
 local lsp_installer = require("nvim-lsp-installer")
-local servers = require("nvim-lsp-installer.servers")
 local lsp_signature = require('lsp_signature')
-
 local lsp_status = require('lsp-status')
 lsp_status.register_progress()
 
@@ -30,12 +28,11 @@ local function on_attach(client, bufnr)
     { "n", "]e", [[<Cmd>lua vim.lsp.diagnostic.goto_next()<CR>]], opts },
     { "n", "[e", [[<Cmd>lua vim.lsp.diagnostic.goto_prev()<CR>]], opts },
   }
+  for _, map in pairs(mappings) do
+      vim.api.nvim_buf_set_keymap(bufnr, unpack(map))
+  end
 
   vim.api.nvim_buf_set_keymap(bufnr, "n", "K", [[<Cmd>lua vim.lsp.buf.hover()<CR>]], opts)
-
-  for _, map in pairs(mappings) do
-    vim.api.nvim_buf_set_keymap(bufnr, unpack(map))
-  end
 
   if client.resolved_capabilities.document_formatting then
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>F", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
@@ -57,29 +54,10 @@ local function on_attach(client, bufnr)
   lsp_signature.on_attach(client)
   -- Lsp lsp_status
   lsp_status.on_attach(client)
-
 end
 
 
-local function make_config()
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities.textDocument.completion.completionItem.snippetSupport = true
-  capabilities.textDocument.completion.completionItem.resolveSupport = {
-    properties = { "documentation", "detail", "additionalTextEdits" },
-  }
-  capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
-  return {
-    on_attach = on_attach,
-    capabilities = vim.tbl_extend('keep', capabilities, lsp_status.capabilities),
-    handlers = {
-      ["textDocument/publishDiagnostics"] = vim.lsp.with(
-        vim.lsp.diagnostic.on_publish_diagnostics,
-        { virtual_text = false }
-      ),
-    },
-  }
-end
-
+-- check for missing lsp servers and install them
 -- lsp servers
 local required_servers = {
   "sumneko_lua", -- lua
@@ -91,8 +69,7 @@ local required_servers = {
   "jsonls", -- json
   "sqlls", -- sql
 }
-
--- check for missing lsp servers and install them
+local servers = require("nvim-lsp-installer.servers")
 for _, svr in pairs(required_servers) do
   local ok, lsp_server = servers.get_server(svr)
   if ok then
@@ -102,11 +79,29 @@ for _, svr in pairs(required_servers) do
   end
 end
 
-local cfg = make_config()
+-- Configure each server
+local function make_config()
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
+    capabilities.textDocument.completion.completionItem.resolveSupport = {
+        properties = { "documentation", "detail", "additionalTextEdits" },
+    }
+    capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+    return {
+        on_attach = on_attach,
+        capabilities = vim.tbl_extend('keep', capabilities, lsp_status.capabilities),
+        handlers = {
+            ["textDocument/publishDiagnostics"] = vim.lsp.with(
+            vim.lsp.diagnostic.on_publish_diagnostics,
+            { virtual_text = false }
+            ),
+        },
+    }
+end
 
+local cfg = make_config()
 lsp_installer.on_server_ready(function(server)
         server:setup(cfg)
-  -- end
   vim.cmd([[do User LspAttachBuffers]])
 end)
 
