@@ -153,14 +153,9 @@ return require("packer").startup(function(use)
 		 {'kyazdani42/nvim-web-devicons', opt = true },
                  {'nvim-lua/lsp-status.nvim' },
 	 },
-        config = function ()
-            local lsp_status = require('lsp-status')
-            require('lualine').setup{
-                sections = {
-                    lualine_x = { lsp_status.status(), 'encoding', 'fileformat', 'filetype' },
-                }
-            }
-	end
+        config = function()
+          require("config.lualine")
+         end
      }
 
      if packer_bootstrap then
