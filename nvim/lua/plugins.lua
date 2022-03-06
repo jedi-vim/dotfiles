@@ -67,34 +67,8 @@ return require("packer").startup(function(use)
   -- -- Add git related info in the signs columns and popups
   use {
     'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' },
-    config = function()
-      require'gitsigns'.setup {
-        numhl = false,
-        linehl = false,
-        keymaps = {
-          -- Default keymap options
-          noremap = true,
-          buffer = true,
-
-          ['n ]g'] = { expr = true, "&diff ? ']c' : '<cmd>lua require\"gitsigns.actions\".next_hunk()<CR>'"},
-          ['n [g'] = { expr = true, "&diff ? '[c' : '<cmd>lua require\"gitsigns.actions\".prev_hunk()<CR>'"},
-
-          ['n <leader>ghu'] = '<cmd>lua require"gitsigns".reset_hunk()<CR>',
-          ['v ghu'] = '<cmd>lua require"gitsigns".reset_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>',
-          ['n ghp'] = '<cmd>lua require"gitsigns".preview_hunk()<CR>',
-
-          -- Text objects
-          -- ['o ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
-          -- ['x ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>'
-        },
-        current_line_blame = true,
-        current_line_blame_opts = {
-          delay = 0
-        }
-      }
-    end
+    config = function() require('config.gitsigns') end
   }
-  -- Sintasse para várias linguagens
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
