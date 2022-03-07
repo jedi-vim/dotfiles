@@ -83,7 +83,7 @@ ins_left {
         return '𝝺 ' .. vim.b.lsp_current_function
     end,
     cond = conditions.buffer_not_empty,
-    color = { fg = colors.blue, gui = 'bold' },
+    color = { fg = colors.white, bg = colors.gray },
     padding = { left = 1, right = 0 },
     separator = ''
 }
