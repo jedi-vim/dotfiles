@@ -44,10 +44,10 @@ local lsp_installer = require("nvim-lsp-installer")
 lsp_installer.on_server_ready(function(server)
     local opts = make_config()
 
-    -- if server.name == "pyright" then 
-    --     local pyright_opts = require("config.lsp.settings.pyright")
-    --     opts = vim.tbl_deep_extend("force", pyright_opts, opts)
-    -- end
+    if server.name == "pyright" then
+        local pyright_opts = require("config.lsp.settings.pyright")
+            opts = vim.tbl_deep_extend("force", pyright_opts, opts)
+    end
 
     server:setup(opts)
 end)
