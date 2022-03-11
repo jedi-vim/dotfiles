@@ -33,11 +33,11 @@ return require("packer").startup(function(use)
   use 'tpope/vim-surround' -- Surround sugar
 
   -- GruvBox Theme, the greatest
-  use { 
+  use {
     'ellisonleao/gruvbox.nvim',
   }
   use({ "kyazdani42/nvim-web-devicons" })
-  use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines 
+  use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use({
     "mhinz/vim-startify",
     config = function()
