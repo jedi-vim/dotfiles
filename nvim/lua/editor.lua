@@ -61,6 +61,7 @@ vim.cmd [[
    autocmd!
    autocmd BufReadPre,BufReadPost *.py setlocal foldmethod=indent foldnestmax=2
 ]]
+
 -- Highlight on yank
  vim.cmd [[
    augroup YankHighlight
@@ -68,13 +69,6 @@ vim.cmd [[
            autocmd TextYankPost * silent! lua vim.highlight.on_yank()
              augroup end
  ]]
-
---Set statusbar
-vim.g.lightline = {
-  colorscheme = 'wombat',
-  active = { left = { { 'mode', 'paste' }, { 'gitbranch', 'readonly', 'filename', 'modified' } } },
-  component_function = { gitbranch = 'fugitive#head' },
-}
 
 --Map blankline
 vim.g.indent_blankline_char = '┊'
