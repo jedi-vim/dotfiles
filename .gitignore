@@ -9,6 +9,9 @@ gcloud/**
 libreoffice/**
 nvim/plugged/**
 spotify/**
+google-chrome/**
+gnome-control-center/**
+menus/**
 pulse/**
 transmission/**
 teams/**
@@ -16,3 +19,4 @@ sublime-merge/**
 Code/**
 vlc/**
 tags
+monitors.xml
