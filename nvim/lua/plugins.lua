@@ -72,14 +72,11 @@ return require("packer").startup(function(use)
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
-    config = function ()
-      require'nvim-treesitter.configs'.setup {
-        ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-        highlight = {
-          enable = true,              -- false will disable the whole extension
-        },
-      }
-    end
+    config = function () require('config.treesitter') end,
+    requires = {
+        "nvim-treesitter/nvim-treesitter-refactor",
+        "romgrk/nvim-treesitter-context",
+    }
   }
    use({ "folke/lua-dev.nvim" })
    use {
