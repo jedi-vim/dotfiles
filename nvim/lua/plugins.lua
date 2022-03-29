@@ -32,10 +32,17 @@ return require("packer").startup(function(use)
   use 'haya14busa/incsearch-fuzzy.vim' -- Increase search with fuzzy strategy
   use 'tpope/vim-surround' -- Surround sugar
 
-  -- GruvBox Theme, the greatest
-  use {
-    'ellisonleao/gruvbox.nvim',
-  }
+  --Themes
+  use 'ellisonleao/gruvbox.nvim'
+  use 'shaunsingh/nord.nvim'
+  -- use {
+  --   'projekt0n/github-nvim-theme',
+  --   config = function()
+  --       require("github-theme").setup({theme_style = "light_colorblind"})
+  --   end
+  -- }
+
+
   use({ "kyazdani42/nvim-web-devicons" })
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use({
@@ -48,7 +55,10 @@ return require("packer").startup(function(use)
   -- UI to select things (files, grep results, open buffers...)
   use {
       "nvim-telescope/telescope.nvim",
-      requires = {"nvim-lua/plenary.nvim", "nvim-lua/popup.nvim"},
+      requires = {
+            "nvim-lua/plenary.nvim",
+            "nvim-lua/popup.nvim",
+       },
       config = [[require("config.telescope")]],
   }
   -- File tree explorer
@@ -74,6 +84,7 @@ return require("packer").startup(function(use)
     'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' },
     config = function() require('config.gitsigns') end
   }
+
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
@@ -81,6 +92,7 @@ return require("packer").startup(function(use)
     requires = {
         "nvim-treesitter/nvim-treesitter-refactor",
         "romgrk/nvim-treesitter-context",
+        "p00f/nvim-ts-rainbow",
     }
   }
 
@@ -134,6 +146,7 @@ return require("packer").startup(function(use)
      })
      use {
          'nvim-lualine/lualine.nvim',
+         -- after = 'github-nvim-theme',
          requires = {
 		 {'kyazdani42/nvim-web-devicons', opt = true },
                  {'nvim-lua/lsp-status.nvim' },
