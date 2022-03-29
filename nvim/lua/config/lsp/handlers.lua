@@ -19,7 +19,6 @@ local lsp_keymaps = function(bufnr)
     { "n", "<leader>bt", [[<Cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], {noremap = true, silent = true},},
     { "n", "<leader>rn", [[<Cmd>lua vim.lsp.buf.rename()<CR>]], opts },
     { "i", "<C-x>", [[<Cmd>lua vim.lsp.buf.signature_help()<CR>]], opts },
-    { "n", "<space>ca", [[<Cmd>lua vim.lsp.buf.code_action()<CR>]], opts },
     { "n", "]e", [[<Cmd>lua vim.lsp.diagnostic.goto_next()<CR>]], opts },
     { "n", "[e", [[<Cmd>lua vim.lsp.diagnostic.goto_prev()<CR>]], opts },
   }
@@ -51,8 +50,6 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {properties
 M.capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
 local lsp_signature = require('lsp_signature')
-local lsp_status = require('lsp-status')
-lsp_status.register_progress()
 
 M.on_attach = function(client, bufnr)
   if client.name == "tsserver" then
@@ -64,8 +61,6 @@ M.on_attach = function(client, bufnr)
 
   -- Lsp lsp_signature
   lsp_signature.on_attach(client)
-  -- Lsp lsp_status
-  lsp_status.on_attach(client)
 end
 
 return M
