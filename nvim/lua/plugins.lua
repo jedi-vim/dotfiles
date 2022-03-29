@@ -58,7 +58,12 @@ return require("packer").startup(function(use)
       'kyazdani42/nvim-web-devicons', -- optional, for file icon
     },
     config = function() require('config.nvim-tree') end
-}
+  }
+  use {
+    "gelguy/wilder.nvim",
+    run = ":UpdateRemotePlugins",
+    config = function() require("config.wilder") end,
+  }
   -- buffer tabs at top
   use({
     "akinsho/nvim-bufferline.lua",

@@ -1,13 +1,3 @@
-require'fidget'.setup{
-  text = {
-    spinner = "dots",
-    done = "✅"
-  },
-  timer = {
-    fidget_decay = -1 -- Always show
-  }
-}
-
 -- check for missing lsp servers and install them
 -- lsp servers
 local required_servers = {
