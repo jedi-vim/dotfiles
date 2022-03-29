@@ -78,17 +78,26 @@ return require("packer").startup(function(use)
         "romgrk/nvim-treesitter-context",
     }
   }
-   use({ "folke/lua-dev.nvim" })
-   use {
+
+  use {
+  "folke/twilight.nvim",
+  config = [[require("config.twilight")]],
+  }
+
+  use({ "folke/lua-dev.nvim" })
+
+  use {
      "neovim/nvim-lspconfig",
      requires = {
          "williamboman/nvim-lsp-installer",
-         "nvim-lua/lsp-status.nvim",
          "ray-x/lsp_signature.nvim",
-         "j-hui/fidget.nvim",
      },
      config = [[require("config.lsp")]],
-   }
+  }
+
+  use {'j-hui/fidget.nvim',
+        config = [[require("config.fidget")]]
+    }
 
    use {
      "hrsh7th/nvim-cmp",
