@@ -116,13 +116,12 @@ return require("packer").startup(function(use)
         config = [[require("config.fidget")]]
     }
 
-   use {
+  use {
      "hrsh7th/nvim-cmp",
      config = function()
       require("config.cmp")
      end,
      requires = {
-       "f3fora/cmp-spell",
        "hrsh7th/cmp-buffer",
        "hrsh7th/cmp-nvim-lsp",
        "hrsh7th/cmp-nvim-lua",
@@ -130,9 +129,8 @@ return require("packer").startup(function(use)
        "hrsh7th/cmp-cmdline",
        "quangnguyen30192/cmp-nvim-tags",
        "ray-x/cmp-treesitter",
-       "quangnguyen30192/cmp-nvim-ultisnips",
        "onsails/lspkind-nvim",
-     }}
+  }}
      -- lsp, completion, linting and snippets
    use({ "jose-elias-alvarez/null-ls.nvim" })
    use({

@@ -3,7 +3,6 @@
 local cmp = require("cmp")
 local compare = require("cmp.config.compare")
 local lspkind = require('lspkind')
-local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
 
 cmp.setup({
   snippet = {
@@ -12,12 +11,11 @@ cmp.setup({
         end,
   },
   sources = {
-      { name = "ultisnips" },
       { name = "treesitter" },
       { name = "nvim_lsp" },
       { name = "tags" },
-      { name = 'look', keyword_length = 2, option = {convert_case = true, loud = true} },
       { name = "buffer" },
+      { name = 'cmdline' },
       { name = "path" },
       { name = "nvim_lua" },
   },
@@ -32,27 +30,6 @@ cmp.setup({
       behavior = cmp.ConfirmBehavior.Insert,
       select = true,
     }),
-    ["<C-y>"] = function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif vim.fn["vsnip#available"]() == 1 then
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>(vsnip-expand-or-jump)", true, true, true), "")
-      else
-        fallback()
-      end
-    end,
-     ["<Tab>"] = cmp.mapping(
-          function(fallback)
-            cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
-          end,
-          { "i", "s", --[[ "c" (to enable the mapping in command mode) ]] }
-        ),
-    ["<S-Tab>"] = cmp.mapping(
-          function(fallback)
-            cmp_ultisnips_mappings.jump_backwards(fallback)
-          end,
-          { "i", "s", --[[ "c" (to enable the mapping in command mode) ]] }
-        )
   },
   sorting = {
     comparators = {
