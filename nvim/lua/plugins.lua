@@ -134,25 +134,25 @@ return require("packer").startup(function(use)
        "onsails/lspkind-nvim",
      }}
      -- lsp, completion, linting and snippets
-     use({ "jose-elias-alvarez/null-ls.nvim" })
-     use({
-         "folke/trouble.nvim",
-         config = function()
-             require("trouble").setup({})
-             vim.api.nvim_set_keymap("n", "<F8>", "<Cmd>Trouble document_diagnostics<CR>", { silent = true, noremap = true })
-         end,
-     })
-     use {
-         'nvim-lualine/lualine.nvim',
-         -- after = 'github-nvim-theme',
-         requires = {
-		 {'kyazdani42/nvim-web-devicons', opt = true },
-                 {'nvim-lua/lsp-status.nvim' },
-	 },
-        config = function()
-          require("config.lualine")
-         end
-     }
+   use({ "jose-elias-alvarez/null-ls.nvim" })
+   use({
+       "folke/trouble.nvim",
+       config = function()
+           require("trouble").setup({})
+           vim.api.nvim_set_keymap("n", "<F8>", "<Cmd>Trouble document_diagnostics<CR>", { silent = true, noremap = true })
+       end,
+   })
+   use {
+    'nvim-lualine/lualine.nvim',
+     -- after = 'github-nvim-theme',
+     requires = {
+             {'kyazdani42/nvim-web-devicons', opt = true },
+             {'nvim-lua/lsp-status.nvim' },
+     },
+     config = function()
+        require("config.lualine")
+     end
+  }
 
      if packer_bootstrap then
         vim.notify("Installing plugins...")
