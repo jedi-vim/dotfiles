@@ -84,7 +84,7 @@ return require("packer").startup(function(use)
     'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' },
     config = function() require('config.gitsigns') end
   }
-
+  -- Sintax hihjlight based on language
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
@@ -115,7 +115,13 @@ return require("packer").startup(function(use)
   use {'j-hui/fidget.nvim',
         config = [[require("config.fidget")]]
     }
+  -- Snippets engine
+  use {
+        'L3MON4D3/LuaSnip',
+        config= [[require("config.luasnip")]]
+      }
 
+  -- auto completion
   use {
      "hrsh7th/nvim-cmp",
      config = function()
@@ -130,7 +136,8 @@ return require("packer").startup(function(use)
        "quangnguyen30192/cmp-nvim-tags",
        "ray-x/cmp-treesitter",
        "onsails/lspkind-nvim",
-  }}
+       "saadparwaiz1/cmp_luasnip",
+   }}
      -- lsp, completion, linting and snippets
    use({ "jose-elias-alvarez/null-ls.nvim" })
    use({

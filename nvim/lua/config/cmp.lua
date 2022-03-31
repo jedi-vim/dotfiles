@@ -1,16 +1,16 @@
--- nvim-compe configs
--- configure completion
 local cmp = require("cmp")
 local compare = require("cmp.config.compare")
 local lspkind = require('lspkind')
+local luasnip = require('luasnip')
 
 cmp.setup({
   snippet = {
         expand = function(args)
-          vim.fn["UltiSnips#Anon"](args.body)
+            luasnip.lsp_expand(args.body)
         end,
   },
   sources = {
+      { name = "luasnip" },
       { name = "treesitter" },
       { name = "nvim_lsp" },
       { name = "tags" },
