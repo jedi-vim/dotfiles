@@ -12,7 +12,7 @@ luasnip.config.setup {
 luasnip.add_snippets(
     "python", {
         s("pdb" , {
-            t("import pdb;pdb.set_trace()") 
+            t("import pdb;pdb.set_trace()")
         })
     }
 )

@@ -27,17 +27,11 @@ autocmd BufEnter * silent! :lcd%:p:h
 
 -- Manter cursor sempre no meio da tela
 vim.cmd [[
-  augroup VCenterCursor
-      au!
-      au BufEnter,WinEnter,WinNew,VimResized *,*.*
+augroup VCenterCursor
+    au!
+    au BufEnter,WinEnter,WinNew,VimResized *,*.*
             \ let &scrolloff=winheight(win_getid())/2
-  augroup END
-]]
-
--- Manter sessão
-vim.cmd [[
-autocmd VimEnter * source ~/.session.vim
-autocmd VimLeave * mksession! ~/.session.vim
+augroup END
 ]]
 
 -- Ajuste cursor em buffers
@@ -56,7 +50,7 @@ augroup numbertoggle
     autocmd!
     autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
     autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-    augroup END
+augroup END
 ]]
 
 -- Indentação arquivos python
