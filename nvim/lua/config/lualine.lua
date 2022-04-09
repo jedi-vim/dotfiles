@@ -1,5 +1,8 @@
 require("lualine").setup {
-      -- options = {
-        -- theme = "github_light_colorblind"
-      -- }
+      options = {
+        theme = "gruvbox",
+        disabled_filetypes = { 'packer', 'NVimTree' },
+        component_separators = { left = '', right = '' },
+        section_separators = { left = '', right = '' },
+      }
 }
