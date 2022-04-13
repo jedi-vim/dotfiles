@@ -32,3 +32,6 @@ unset color_prompt force_color_prompt
 
 # Elixir: Iex History
 export ERL_AFLAGS="-kernel shell_history enabled"
+
+# Golang
+export PATH=$PATH:/usr/local/go/bin
