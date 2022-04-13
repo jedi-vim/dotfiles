@@ -3,6 +3,7 @@
 local required_servers = {
   "sumneko_lua", -- lua
   "pyright", -- python
+  "gopls", -- golang
   "tsserver", -- js, jsx, tsx
   "bashls", -- bash
   "yamlls", -- yaml
