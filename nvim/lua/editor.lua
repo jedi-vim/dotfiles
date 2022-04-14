@@ -19,6 +19,9 @@ opt.splitright = true
 opt.expandtab = true
 opt.shiftwidth = 4
 opt.softtabstop = 4
+opt.foldlevel=5
+opt.foldmethod = "expr"
+opt.foldexpr =  "nvim_treesitter#foldexpr()"
 
 -- Manter CWD com o arquivo aberto
 vim.cmd [[
@@ -51,13 +54,6 @@ augroup numbertoggle
     autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
     autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
-]]
-
--- Indentação arquivos python
-vim.cmd [[
-  augroup python_indent
-   autocmd!
-   autocmd BufReadPre,BufReadPost *.py setlocal foldmethod=indent foldnestmax=2
 ]]
 
 -- Highlight on yank
