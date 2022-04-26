@@ -6,11 +6,16 @@ vim.g.mapleader = ","
 --Salvar com C-s
 keymap("n", "<C-s>", ":w<CR>", {noremap=false})
 
--- Edit init.vim
-keymap("n", "<leader>ev", ":vsplit ~/.config/nvim/init.lua<cr>", {noremap = true})
-
 -- Reload vim conf
-keymap("n", "<leader>sv", ":source ~/.config/nvim/init.lua<cr>", {noremap = true})
+function _G.ReloadConfig()
+  for name,_ in pairs(package.loaded) do
+    if name:match('^cnull') then
+      package.loaded[name] = nil
+    end
+  end
+  dofile(vim.env.MYVIMRC)
+end
+keymap("n", "<leader>sv", "<Cmd>lua ReloadConfig()<CR>", {noremap = true})
 
 -- Copiar para o clip board
 keymap("v", "yy" , '"+y', {silent = true, noremap = true })

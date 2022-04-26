@@ -1,6 +1,7 @@
 local fn = vim.fn
 local packer_bootstrap
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+
 if fn.empty(fn.glob(install_path)) > 0 then
   vim.notify("Installing packer...")
   packer_bootstrap = fn.system({
@@ -14,14 +15,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
   vim.cmd([[packadd packer.nvim]])
 end
 
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost bootstrap.lua source <afile> | PackerCompile
-  augroup end
-]])
-
-return require("packer").startup(function(use)
+return require("packer").startup {function(use)
   use {
     'wbthomason/packer.nvim',
     opt=false
@@ -29,7 +23,6 @@ return require("packer").startup(function(use)
   use 'tpope/vim-commentary' -- "gc" to comment visual regions/lines
   use 'mg979/vim-visual-multi' -- Multicursor
   use 'haya14busa/incsearch.vim' -- Increase search
-  use 'haya14busa/incsearch-fuzzy.vim' -- Increase search with fuzzy strategy
   use 'tpope/vim-surround' -- Surround sugar
 
   --Themes
@@ -44,8 +37,8 @@ return require("packer").startup(function(use)
   -- }
 
 
-  use({ "kyazdani42/nvim-web-devicons" })
-  use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
+  use { "kyazdani42/nvim-web-devicons" }
+  use { "lukas-reineke/indent-blankline.nvim" } -- Add indentation guides even on blank lines
   use { "mhinz/vim-startify", config=[[require("config.startify")]] }
 
   -- UI to select things (files, grep results, open buffers...)
@@ -58,14 +51,15 @@ return require("packer").startup(function(use)
       config = [[require("config.telescope")]],
   }
   -- File tree explorer
-  use {
-    'kyazdani42/nvim-tree.lua',
-    requires = {
-      'kyazdani42/nvim-web-devicons', -- optional, for file icon
-    },
-    config = function() require('config.nvim-tree') end
-  }
+  -- use {
+  --   'kyazdani42/nvim-tree.lua',
+  --   requires = {
+  --     'kyazdani42/nvim-web-devicons', -- optional, for file icon
+  --   },
+  --   config = function() require('config.nvim-tree') end
+  -- }
 
+  -- File Explorer
   use {
       "nvim-neo-tree/neo-tree.nvim",
        branch = "v2.x",
@@ -74,18 +68,18 @@ return require("packer").startup(function(use)
          "kyazdani42/nvim-web-devicons",
          "MunifTanjim/nui.nvim"
        },
-       config = function() require("config.neo-tree") end
+       config = [[require("config.neo-tree")]]
   }
 
   use {
     "gelguy/wilder.nvim",
     run = ":UpdateRemotePlugins",
-    config = function() require("config.wilder") end,
+    config = [[require("config.wilder")]],
   }
   -- buffer tabs at top
   use({
-    "akinsho/nvim-bufferline.lua",
-    config = function() require("bufferline").setup {} end,
+   "akinsho/nvim-bufferline.lua",
+    config = [[require("bufferline").setup {}]],
   })
   -- -- Add git related info in the signs columns and popups
   use {
