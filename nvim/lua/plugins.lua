@@ -33,7 +33,8 @@ return require("packer").startup(function(use)
   use 'tpope/vim-surround' -- Surround sugar
 
   --Themes
-  use 'ellisonleao/gruvbox.nvim'
+  --Remover o commit ao excutar o neovim 0.7
+  use {'ellisonleao/gruvbox.nvim', commit='dc6bae9'}
   use 'shaunsingh/nord.nvim'
   -- use {
   --   'projekt0n/github-nvim-theme',
