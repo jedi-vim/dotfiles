@@ -29,6 +29,7 @@ local opts = {
     }
 }
 
+require("config.lsp.null-ls").setup(opts)
 
 require("nvim-lsp-installer").on_server_ready(function(server)
     -- if server.name == "pyright" then

@@ -141,7 +141,7 @@ return require("packer").startup {function(use)
        "saadparwaiz1/cmp_luasnip",
    }}
      -- lsp, completion, linting and snippets
-  use({ "jose-elias-alvarez/null-ls.nvim" })
+  use { "jose-elias-alvarez/null-ls.nvim", requires= { "SmiteshP/nvim-gps" }}
   use({
        "folke/trouble.nvim",
        config = function()
