@@ -46,18 +46,7 @@ return require("packer").startup(function(use)
 
   use({ "kyazdani42/nvim-web-devicons" })
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
-  use({
-    "mhinz/vim-startify",
-    config = function()
-        vim.g. startify_lists = {
-            { type = 'sessions',  header = { '  Sessions' } },
-            { type = 'files', header = { '  MRU' } },
-            { type = 'dir', header = { "   Current Directory "..vim.fn.getcwd()..":" } },
-            { type = 'bookmarks', header = { '  Bookmarks' } },
-            { type = 'commands',  header = { '  Commands' } }
-        }
-    end,
-  })
+  use { "mhinz/vim-startify", config=[[require("config.startify")]] }
 
   -- UI to select things (files, grep results, open buffers...)
   use {
