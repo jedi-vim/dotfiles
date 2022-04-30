@@ -167,5 +167,7 @@ return require("packer").startup {function(use)
         vim.notify("Installing plugins...")
         require("packer").sync()
      end
-end)
+end,
+config= { display = { open_fn = require('packer.util').float } }
+}
 
