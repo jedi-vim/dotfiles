@@ -81,7 +81,6 @@ return require("packer").startup {function(use)
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
-    config = function () require('config.treesitter') end,
     requires = {
         "nvim-treesitter/nvim-treesitter-refactor",
         "romgrk/nvim-treesitter-context",
@@ -101,8 +100,7 @@ return require("packer").startup {function(use)
      requires = {
          "williamboman/nvim-lsp-installer",
          "ray-x/lsp_signature.nvim",
-     },
-     config = [[require("config.lsp")]],
+     }
   }
 
   -- Snippets engine
