@@ -1,5 +1,11 @@
+local ok, tl = pcall(require, "telescope")
+if not ok then
+    return
+end
+
 local actions = require("telescope.actions")
-require("telescope").setup(
+
+tl.setup(
   {defaults = {mappings = {i = {["<Esc>"] = actions.close}}}}
 )
 local opts = {noremap = true}
@@ -22,3 +28,5 @@ local mappings = {
 for _, val in pairs(mappings) do
   vim.api.nvim_set_keymap(unpack(val))
 end
+
+tl.load_extension("notify")

@@ -1,3 +1,8 @@
+local ok, lsp_installer = pcall(require, "nvim-lsp-installer")
+if not ok then
+  return
+end
+
 -- check for missing lsp servers and install them
 -- lsp servers
 local required_servers = {
@@ -30,11 +35,13 @@ local opts = {
 }
 
 require("config.lsp.null-ls").setup(opts)
+require("config.lsp.notify").setup()
 
-require("nvim-lsp-installer").on_server_ready(function(server)
+lsp_installer.on_server_ready(function(server)
     -- if server.name == "pyright" then
     --     local pyright_opts = require("config.lsp.settings.pyright")
     --         opts = vim.tbl_deep_extend("force", pyright_opts, opts)
     -- end
     server:setup(opts)
 end)
+

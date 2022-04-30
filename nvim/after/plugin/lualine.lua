@@ -1,3 +1,8 @@
+local ok, lualine = pcall(require, "lualine")
+if not ok then
+    return
+end
+
 local gps = require "nvim-gps"
 
 local function separator()
@@ -42,7 +47,7 @@ local function lsp_client(msg)
   return "[" .. table.concat(buf_client_names, ", ") .. "]"
 end
 
-require("lualine").setup {
+lualine.setup {
     options = {
         theme = "gruvbox",
         disabled_filetypes = { 'packer' },
@@ -61,6 +66,7 @@ require("lualine").setup {
                 colored = false,
             },
         },
+        -- NOT WORKING
         lualine_c = {
             { separator },
             { lsp_client, icon = " "},

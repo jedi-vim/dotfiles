@@ -2,46 +2,33 @@ local M = {}
 
 local nls = require "null-ls"
 local nls_utils = require "null-ls.utils"
-local b = nls.builtins
 
-local with_diagnostics_code = function(builtin)
-  return builtin.with {
-    diagnostics_format = "#{m} [#{c}]",
-  }
-end
-
-local with_root_file = function(builtin, file)
-  return builtin.with {
-    condition = function(utils)
-      return utils.root_has_file(file)
-    end,
-  }
-end
+local formatting = nls.builtins.formatting
+local diagnostics = nls.builtins.diagnostics
+local actions = nls.builtins.code_actions
 
 local sources = {
   -- formatting
-  b.formatting.prettierd,
-  b.formatting.shfmt,
-  b.formatting.fixjson,
-  b.formatting.black.with { extra_args = { "--fast" } },
-  b.formatting.isort,
-  with_root_file(b.formatting.stylua, "stylua.toml"),
+  formatting.prettierd,
+  formatting.shfmt,
+  formatting.fixjson,
+  formatting.black,
+  formatting.isort,
 
   -- diagnostics
-  b.diagnostics.write_good,
-  -- b.diagnostics.markdownlint,
-  -- b.diagnostics.eslint_d,
-  b.diagnostics.flake8,
-  -- b.diagnostics.tsc,
-  with_root_file(b.diagnostics.selene, "selene.toml"),
-  with_diagnostics_code(b.diagnostics.shellcheck),
+  diagnostics.write_good,
+  diagnostics.eslint_d,
+  diagnostics.flake8,
+  diagnostics.credo,
+  diagnostics.zsh,
 
   -- code actions
-  b.code_actions.gitsigns,
-  b.code_actions.gitrebase,
+  actions.gitsigns,
+  actions.gitrebase,
+  actions.refactoring
 
   -- hover
-  b.hover.dictionary,
+  -- b.hover.dictionary,
 }
 
 function M.setup(opts)

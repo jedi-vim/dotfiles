@@ -1,17 +1,22 @@
-vim.cmd[[ let g:neo_tree_remove_legacy_commands = 1 ]]
+local ok, neo_tree = pcall(require, "neo-tree")
+if not ok then
+    return
+end
 
--- vim.fn.sign_define("DiagnosticSignError", {text = " ", texthl = "DiagnosticSignError"})
--- vim.fn.sign_define("DiagnosticSignWarn", {text = " ", texthl = "DiagnosticSignWarn"})
--- vim.fn.sign_define("DiagnosticSignInfo", {text = " ", texthl = "DiagnosticSignInfo"})
--- vim.fn.sign_define("DiagnosticSignHint", {text = "", texthl = "DiagnosticSignHint"})
+vim.g.neo_tree_remove_legacy_commands = 1
+
+vim.fn.sign_define("DiagnosticSignError", {text = " ", texthl = "DiagnosticSignError"})
+vim.fn.sign_define("DiagnosticSignWarn", {text = " ", texthl = "DiagnosticSignWarn"})
+vim.fn.sign_define("DiagnosticSignInfo", {text = " ", texthl = "DiagnosticSignInfo"})
+vim.fn.sign_define("DiagnosticSignHint", {text = "", texthl = "DiagnosticSignHint"})
 
 --Mappging
 vim.api.nvim_set_keymap( "n", "<F9>", ":Neotree source=filesystem position=float action=focus<CR>", { noremap = true })
 vim.api.nvim_set_keymap( "n", "<F8>", ":Neotree source=git_status position=float<CR>", { noremap = true })
--- vim.api.nvim_set_keymap( "n", "<F8>", ":Neotree source=buffers position=float<CR>", { noremap = true })
+vim.api.nvim_set_keymap( "n", "<F7>", ":Neotree source=buffers position=float<CR>", { noremap = true })
 
-require("neo-tree").setup({
-    close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
+neo_tree.setup({
+    close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
     popup_border_style = "rounded",
     enable_git_status = true,
     enable_diagnostics = true,
