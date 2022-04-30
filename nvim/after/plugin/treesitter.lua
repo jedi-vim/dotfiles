@@ -3,7 +3,7 @@ if not ok then
     return
 end
 
-treesitter.configs.setup {
+treesitter.setup {
     ensure_installed = "all",
     highlight = {
       enable = true,
