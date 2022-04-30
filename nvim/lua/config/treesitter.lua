@@ -1,10 +1,19 @@
 require'nvim-treesitter.configs'.setup {
-    ensure_installed = { "python", "lua", "javascript"},
+    ensure_installed = "all",
     highlight = {
       enable = true,
     },
     indent = {
         enable = true
+    },
+    incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = "gnn",
+          node_incremental = "grn",
+          scope_incremental = "grc",
+          node_decremental = "grm",
+        },
     },
     refactor = {
         highlight_current_scope = { enable = true },
@@ -21,9 +30,9 @@ require'nvim-treesitter.configs'.setup {
 }
 
 require'treesitter-context'.setup{
-    enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
-    throttle = true, -- Throttles plugin updates (may improve performance)
-    max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
+    enable = true,
+    throttle = true,
+    max_lines = 3, -- How many lines the window should span. Values <= 0 mean no limit.
     patterns = { -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
         -- For all filetypes
         -- Note that setting an entry here replaces all other patterns for this entry.
@@ -44,6 +53,6 @@ require'treesitter-context'.setup{
         -- Example for a specific filetype with Lua patterns
         -- Treat patterns.rust as a Lua pattern (i.e "^impl_item$" will
         -- exactly match "impl_item" only)
-        -- rust = true, 
+        -- rust = true,
     }
 }
