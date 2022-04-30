@@ -24,6 +24,7 @@ return require("packer").startup {function(use)
   use 'mg979/vim-visual-multi' -- Multicursor
   use 'haya14busa/incsearch.vim' -- Increase search
   use 'tpope/vim-surround' -- Surround sugar
+  use { 'rcarriga/nvim-notify', config=[[require("config.notify").setup_notify()]]}
 
   --Themes
   --Remover o commit ao excutar o neovim 0.7
