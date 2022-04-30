@@ -1,5 +1,9 @@
+local ok, tl = pcall(require, "telescope")
+if not ok then
+    return
+end
+
 local actions = require("telescope.actions")
-local tl = require("telescope")
 
 tl.setup(
   {defaults = {mappings = {i = {["<Esc>"] = actions.close}}}}

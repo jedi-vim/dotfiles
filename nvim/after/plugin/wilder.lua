@@ -1,3 +1,8 @@
+local ok, _ = pcall(require, "wilder")
+if not ok then
+   return
+end
+
 vim.cmd ([[
 call wilder#setup({'modes': [':', '/', '?']})
 call wilder#set_option('renderer', wilder#popupmenu_renderer({

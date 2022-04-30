@@ -24,7 +24,7 @@ return require("packer").startup {function(use)
   use 'mg979/vim-visual-multi' -- Multicursor
   use 'haya14busa/incsearch.vim' -- Increase search
   use 'tpope/vim-surround' -- Surround sugar
-  use { 'rcarriga/nvim-notify', config=[[require("config.notify").setup_notify()]]}
+  use 'rcarriga/nvim-notify'
 
   --Themes
   --Remover o commit ao excutar o neovim 0.7
@@ -38,9 +38,9 @@ return require("packer").startup {function(use)
   -- }
 
 
-  use { "kyazdani42/nvim-web-devicons" }
-  use { "lukas-reineke/indent-blankline.nvim" } -- Add indentation guides even on blank lines
-  use { "mhinz/vim-startify", config=[[require("config.startify")]] }
+  use "kyazdani42/nvim-web-devicons"
+  use "lukas-reineke/indent-blankline.nvim" -- Add indentation guides even on blank lines
+  use 'mhinz/vim-startify' -- Friendly start screen
 
   -- UI to select things (files, grep results, open buffers...)
   use {
@@ -49,17 +49,8 @@ return require("packer").startup {function(use)
             "nvim-lua/plenary.nvim",
             "nvim-lua/popup.nvim",
        },
-      config = [[require("config.telescope")]],
       commit="d88094f"
   }
-  -- File tree explorer
-  -- use {
-  --   'kyazdani42/nvim-tree.lua',
-  --   requires = {
-  --     'kyazdani42/nvim-web-devicons', -- optional, for file icon
-  --   },
-  --   config = function() require('config.nvim-tree') end
-  -- }
 
   -- File Explorer
   use {
@@ -69,24 +60,22 @@ return require("packer").startup {function(use)
          "nvim-lua/plenary.nvim",
          "kyazdani42/nvim-web-devicons",
          "MunifTanjim/nui.nvim"
-       },
-       config = [[require("config.neo-tree")]]
+       }
   }
 
   use {
     "gelguy/wilder.nvim",
-    run = ":UpdateRemotePlugins",
-    config = [[require("config.wilder")]],
+    run = ":UpdateRemotePlugins"
   }
   -- buffer tabs at top
-  use({
-   "akinsho/nvim-bufferline.lua",
+  use{
+    "akinsho/nvim-bufferline.lua",
     config = [[require("bufferline").setup {}]],
-  })
+  }
   -- -- Add git related info in the signs columns and popups
   use {
-    'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' },
-    config = function() require('config.gitsigns') end
+    'lewis6991/gitsigns.nvim',
+    requires = { 'nvim-lua/plenary.nvim' },
   }
   -- Sintax hihjlight based on language
   use {
@@ -100,13 +89,13 @@ return require("packer").startup {function(use)
     }
   }
 
-  use {
-  "folke/twilight.nvim",
-  config = [[require("config.twilight")]],
-  }
+  -- inactive portions of the code you're editing
+  use "folke/twilight.nvim"
 
-  use({ "folke/lua-dev.nvim" })
+  -- Docs and completion for the nvim lua API.
+  use "folke/lua-dev.nvim"
 
+  -- Quickstart configurations for the Nvim LSP client
   use {
      "neovim/nvim-lspconfig",
      requires = {
@@ -116,22 +105,13 @@ return require("packer").startup {function(use)
      config = [[require("config.lsp")]],
   }
 
-  use {'j-hui/fidget.nvim',
-        config = [[require("config.fidget")]]
-    }
   -- Snippets engine
-  use {
-        'L3MON4D3/LuaSnip',
-        config= [[require("config.luasnip")]]
-      }
+  use "L3MON4D3/LuaSnip"
 
-  -- auto completion
+  -- A completion engine plugin
   use {
      "hrsh7th/nvim-cmp",
-     config = function()
-      require("config.cmp")
-     end,
-     requires = {
+      requires = {
        "hrsh7th/cmp-buffer",
        "hrsh7th/cmp-nvim-lsp",
        "hrsh7th/cmp-nvim-lua",
@@ -142,32 +122,37 @@ return require("packer").startup {function(use)
        "onsails/lspkind-nvim",
        "saadparwaiz1/cmp_luasnip",
    }}
+
      -- lsp, completion, linting and snippets
   use { "jose-elias-alvarez/null-ls.nvim", requires= { "SmiteshP/nvim-gps" }}
-  use({
-       "folke/trouble.nvim",
-       config = function()
-           require("trouble").setup({})
-           vim.api.nvim_set_keymap("n", "<F6>", "<Cmd>Trouble document_diagnostics<CR>", { silent = true, noremap = true })
-       end,
-  })
+
+  -- A pretty list for showing diagnostics, references etc.
+  use {
+    "folke/trouble.nvim",
+    config = function()
+        require("trouble").setup({})
+        vim.api.nvim_set_keymap("n", "<F6>", "<Cmd>Trouble document_diagnostics<CR>", { silent = true, noremap = true })
+    end,
+  }
+
+  -- A blazing fast and easy to configure neovim statusline plugin
   use {
     'nvim-lualine/lualine.nvim',
-     -- after = 'github-nvim-theme',
      requires = {
              {'kyazdani42/nvim-web-devicons', opt = true },
              {'nvim-lua/lsp-status.nvim' },
      },
-     config = function()
-        require("config.lualine")
-     end
   }
 
-     if packer_bootstrap then
-        vim.notify("Installing plugins...")
-        require("packer").sync()
-     end
+  if packer_bootstrap then
+     vim.notify("Installing plugins...")
+     require("packer").sync()
+  end
 end,
-config= { display = { open_fn = require('packer.util').float } }
+config= {
+        display = {
+            open_fn = require('packer.util').float
+        }
+    }
 }
 

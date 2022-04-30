@@ -1,4 +1,8 @@
-local luasnip = require("luasnip")
+local ok, luasnip = pcall(require, "luasnip")
+if not ok then
+    return
+end
+
 local s = luasnip.snippet
 local t = luasnip.text_node
 

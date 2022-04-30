@@ -1,4 +1,8 @@
-local cmp = require("cmp")
+local ok, cmp = pcall(require, "cmp")
+if not ok then
+    return
+end
+
 local compare = require("cmp.config.compare")
 local lspkind = require('lspkind')
 local luasnip = require('luasnip')

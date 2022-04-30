@@ -1,4 +1,9 @@
-require("twilight").setup {
+local ok, twilight = pcall(require, "twilight")
+if not ok then
+    return
+end
+
+twilight.setup {
   dimming = {
     alpha = 0.25,
     color = { "Normal", "#ffffff" },

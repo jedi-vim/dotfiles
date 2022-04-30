@@ -1,4 +1,9 @@
-require'nvim-treesitter.configs'.setup {
+local ok, treesitter = pcall(require, "nvim-treesitter.configs")
+if not ok then
+    return
+end
+
+treesitter.configs.setup {
     ensure_installed = "all",
     highlight = {
       enable = true,
@@ -34,10 +39,6 @@ require'treesitter-context'.setup{
     throttle = true,
     max_lines = 3, -- How many lines the window should span. Values <= 0 mean no limit.
     patterns = { -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
-        -- For all filetypes
-        -- Note that setting an entry here replaces all other patterns for this entry.
-        -- By setting the 'default' entry below, you can control which nodes you want to
-        -- appear in the context window.
         default = {
             'class',
             'function',
@@ -48,11 +49,5 @@ require'treesitter-context'.setup{
             'switch',
             'case',
         },
-    },
-    exact_patterns = {
-        -- Example for a specific filetype with Lua patterns
-        -- Treat patterns.rust as a Lua pattern (i.e "^impl_item$" will
-        -- exactly match "impl_item" only)
-        -- rust = true,
     }
 }
