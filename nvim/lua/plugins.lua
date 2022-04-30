@@ -50,6 +50,7 @@ return require("packer").startup {function(use)
             "nvim-lua/popup.nvim",
        },
       config = [[require("config.telescope")]],
+      commit="d88094f"
   }
   -- File tree explorer
   -- use {
