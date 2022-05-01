@@ -122,7 +122,13 @@ return require("packer").startup {function(use)
    }}
 
      -- lsp, completion, linting and snippets
-  use { "jose-elias-alvarez/null-ls.nvim", requires= { "SmiteshP/nvim-gps" }}
+  use { 
+        "jose-elias-alvarez/null-ls.nvim",
+        requires= { 
+            "SmiteshP/nvim-gps",
+            "ThePrimeagen/refactoring.nvim",
+        }
+    }
 
   -- A pretty list for showing diagnostics, references etc.
   use {
