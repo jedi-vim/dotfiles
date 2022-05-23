@@ -8,13 +8,18 @@ local actions = require("telescope.actions")
 tl.setup(
   {defaults = {mappings = {i = {["<Esc>"] = actions.close}}}}
 )
+
+vim.cmd[[
+command! -nargs=0 Ag lua require("config.telescope.ag").search()
+]]
+
 local opts = {noremap = true}
 local mappings = {
   {"n", "<Leader>b", [[<Cmd>Telescope buffers<CR>]], opts},
   {"n", "<Leader>f", [[<Cmd>Telescope git_files<CR>]], opts},
   {"n", "<Leader>h", [[<Cmd>Telescope oldfiles<CR>]], opts},
   {"n", "<F10>", [[<Cmd>Telescope help_tags<CR>]], opts},
-  {"n", "<Leader>g", [[<Cmd>Telescope live_grep<CR>]], opts},
+  {"n", "<Leader>g", [[<Cmd>Ag<CR>]], opts},
   -- git
   {"n", "<Leader>bc", [[<Cmd>Telescope git_bcommits<CR>]], opts},
   -- Git Status
