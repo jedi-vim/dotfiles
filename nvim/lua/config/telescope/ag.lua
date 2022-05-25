@@ -1,7 +1,9 @@
 local finders = require('telescope.finders')
 local pickers = require('telescope.pickers')
+local sorters = require "telescope.sorters"
 local utils = require("telescope.utils")
 local conf = require("telescope.config").values
+local make_entry = require"telescope.make_entry"
 local flatten = vim.tbl_flatten
 
 local escape_chars = function(string)
@@ -75,8 +77,13 @@ function m_entry(entry)
 end
 
 function fn_command(prompt)
+    if prompt =="" then
+        return nil
+    elseif #prompt < 4 then
+        return nil
+    end
     local search = escape_chars(prompt)
-    return flatten {'ag', '--vimgrep', search}
+    return flatten {'ag', search}
 end
 
 local M = {}
@@ -86,8 +93,9 @@ M.search = function(opts)
     pickers.new(opts, {
            prompt_title='Silver Searcher',
            finder=finders.new_job(fn_command, m_entry, nil, opts.cwd),
-           previewer=conf.grep_previewer(opts)
+           previewer=conf.grep_previewer(opts),
+           sorter = sorters.highlighter_only(opts),
     }):find()
 end
-M.search()
--- return M
+-- M.search()
+return M
