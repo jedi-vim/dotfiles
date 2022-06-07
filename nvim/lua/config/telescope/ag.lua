@@ -25,37 +25,34 @@ local escape_chars = function(string)
   })
 end
 
+-- Find root of git directory and remove trailing newline characters
+function find_git_root_dir(opts)
+  local git_root, ret = utils.get_os_command_output({ "git", "rev-parse", "--show-toplevel" }, opts.cwd)
+  if ret ~= 0 then
+    return nil
+  else
+    return git_root[1]
+  end
+end
+
 local set_opts_cwd = function(opts)
   if opts.cwd then
     opts.cwd = vim.fn.expand(opts.cwd)
   else
     opts.cwd = vim.loop.cwd()
   end
-
-  -- Find root of git directory and remove trailing newline characters
-  local git_root, ret = utils.get_os_command_output({ "git", "rev-parse", "--show-toplevel" }, opts.cwd)
-  local use_git_root = utils.get_default(opts.use_git_root, true)
-
-  if ret ~= 0 then
-        local in_worktree = utils.get_os_command_output({ "git", "rev-parse", "--is-inside-work-tree" }, opts.cwd)
-        local in_bare = utils.get_os_command_output({ "git", "rev-parse", "--is-bare-repository" }, opts.cwd)
-
-        if in_worktree[1] ~= "true" and in_bare[1] ~= "true" then
-          error(opts.cwd .. " is not a git directory")
-        elseif in_worktree[1] ~= "true" and in_bare[1] == "true" then
-          opts.is_bare = true
-        end
-  else
-    if use_git_root then
-      opts.cwd = git_root[1]
-    end
+  local git_root = find_git_root_dir(opts)
+  if not git_root then
+      error(opts.cwd .. " is not a git directory")
   end
+  opts.cwd = git_root
 end
 
 function m_entry(entry)
     local split = vim.split(entry, ":")
     local rel_filepath = split[1]
-    local abs_filepath = vim.fn.getcwd() .. "/" .. rel_filepath
+    local git_root = find_git_root_dir({})
+    local abs_filepath = git_root .. "/" .. rel_filepath
     local line_num = tonumber(split[2])
     return {
         value = entry,
