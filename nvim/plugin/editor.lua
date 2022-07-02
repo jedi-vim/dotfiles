@@ -20,9 +20,7 @@ opt.expandtab = true
 opt.shiftwidth = 4
 opt.softtabstop = 4
 opt.foldlevel=5
-opt.foldmethod = "expr"
-opt.foldexpr =  "nvim_treesitter#foldexpr()"
-
+--
 -- Manter CWD com o arquivo aberto
 vim.cmd [[
 autocmd BufEnter * silent! :lcd%:p:h
@@ -71,8 +69,8 @@ vim.g.indent_blankline_buftype_exclude = { 'terminal', 'nofile' }
 vim.g.indent_blankline_show_trailing_blankline_indent = false
 
 --Colorscheme
-vim.o.termguicolors = true
-vim.cmd [[colorscheme gruvbox]]
+-- vim.o.termguicolors = true
+-- vim.cmd [[colorscheme gruvbox]]
 
 --notify
 vim.notify = require("notify")
