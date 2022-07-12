@@ -25,7 +25,18 @@ return require("packer").startup {function(use)
   use 'haya14busa/incsearch.vim' -- Increase search
   use 'tpope/vim-surround' -- Surround sugar
   use 'rcarriga/nvim-notify'
-
+  
+  use({
+        "ethanholz/nvim-lastplace",
+        event = "BufRead",
+        config = function()
+            require("nvim-lastplace").setup({
+                lastplace_ignore_buftype = { "quickfix", "nofile", "help" },
+                lastplace_ignore_filetype = { "gitcommit", "gitrebase", "svn", "hgcommit" },
+                lastplace_open_folds = true,
+            })
+        end,
+  })
   --Themes
   --Remover o commit ao excutar o neovim 0.7
   -- use {'ellisonleao/gruvbox.nvim', commit='dc6bae9'}
