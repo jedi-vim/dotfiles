@@ -34,7 +34,7 @@ local opts = {
     }
 }
 
-require("config.lsp.null-ls").setup(opts)
+-- require("config.lsp.null-ls").setup(opts)
 require("config.lsp.notify").setup()
 
 lsp_installer.on_server_ready(function(server)
