@@ -45,3 +45,18 @@ lsp_installer.on_server_ready(function(server)
     server:setup(opts)
 end)
 
+-- diagnostics
+vim.diagnostic.config({
+    virtual_text = false,
+    underline = true,
+    float = {
+        source = "always",
+    },
+    severity_sort = true,
+    --[[ virtual_text = {
+      prefix = "»",
+      spacing = 4,
+    }, ]]
+    signs = true,
+    update_in_insert = false,
+})
