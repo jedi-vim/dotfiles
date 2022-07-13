@@ -1,10 +1,10 @@
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 
 -- LeaderKey
 vim.g.mapleader = ","
 
 --Salvar com C-s
-keymap("n", "<C-s>", ":w<CR>", {noremap=false})
+keymap("n", "<C-s>", ":w<CR>")
 
 -- Reload vim conf
 function _G.ReloadConfig()
@@ -15,45 +15,45 @@ function _G.ReloadConfig()
   end
   dofile(vim.env.MYVIMRC)
 end
-keymap("n", "<leader>sv", "<Cmd>lua ReloadConfig()<CR>", {noremap = true})
+keymap("n", "<leader>sv", "<Cmd>lua ReloadConfig()<CR>")
 
 -- Copiar para o clip board
-keymap("v", "yy" , '"+y', {silent = true, noremap = true })
+keymap("v", "yy" , '"+y')
 
 -- Atalho para mover blocos de texto
-keymap("v", "J", ":m '>+1<CR>gv=gv", {noremap = true})
-keymap("v", "K", ":m '<-2<CR>gv=gv", {noremap = true})
+keymap("v", "J", ":m '>+1<CR>gv=gv")
+keymap("v", "K", ":m '<-2<CR>gv=gv")
 
 -- Mudar para proxima janela
-keymap("n", "<Tab>", "<C-W>w", {silent = true})
+keymap("n", "<Tab>", "<C-W>w")
 
 -- Navegação entre buffers
-keymap("n", "<C-l>", ":bn<CR>", {noremap = true})
-keymap("n", "<C-a>", ":bp<CR>", {noremap = true})
+keymap("n", "<C-l>", ":bn<CR>")
+keymap("n", "<C-a>", ":bp<CR>")
 keymap("n", "<leader>q", ":bd<CR>", {silent = true})
 
 -- Resize da janelas
 -- Vertical
-keymap("n", "<C-w>-", "<C-w>5-", {noremap = true})
-keymap("n", "<C-w>=", "<C-w>5+", {noremap = true})
+keymap("n", "<C-w>-", "<C-w>5-")
+keymap("n", "<C-w>=", "<C-w>5+")
 -- Horizontal
-keymap("n", "<C-w>,", "<C-w>5<", {noremap = true})
-keymap("n", "<C-w>.", "<C-w>5>", {noremap = true})
+keymap("n", "<C-w>,", "<C-w>5<")
+keymap("n", "<C-w>.", "<C-w>5>")
 
 -- Center the cursor vertically when moving to the next word during a search.
-keymap("n", "n", "nzz", {noremap = true})
-keymap("n", "N", "Nzz", {noremap = true})
+keymap("n", "n", "nzz")
+keymap("n", "N", "Nzz")
 
 -- Hlsearch
 opt.hlsearch = true
-vim.g["incsearch#auto_nohlsearch"] = 1
-keymap("n", "n",  "<Plug>(incsearch-nohl-n)", {silent = true})
-keymap("n", "N", "<Plug>(incsearch-nohl-N)", {silent = true})
-keymap("n", "*", "<Plug>(incsearch-nohl-*)", {silent = true})
-keymap("n", "#", "<Plug>(incsearch-nohl-#)", {silent = true})
-keymap("n", "g*", "<Plug>(incsearch-nohl-g*)", {silent = true})
-keymap("n", "g#", "<Plug>(incsearch-nohl-g#)", {silent = true})
-keymap("n", "<Esc><Esc>", ":<C-u>nohlsearch<CR>", {noremap = true})
+-- vim.g["incsearch#auto_nohlsearch"] = 1
+-- keymap("n", "n",  "<Plug>(incsearch-nohl-n)", {silent = true})
+-- keymap("n", "N", "<Plug>(incsearch-nohl-N)", {silent = true})
+-- keymap("n", "*", "<Plug>(incsearch-nohl-*)", {silent = true})
+-- keymap("n", "#", "<Plug>(incsearch-nohl-#)", {silent = true})
+-- keymap("n", "g*", "<Plug>(incsearch-nohl-g*)", {silent = true})
+-- keymap("n", "g#", "<Plug>(incsearch-nohl-g#)", {silent = true})
+-- keymap("n", "<Esc><Esc>", ":<C-u>nohlsearch<CR>", {noremap = true})
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 

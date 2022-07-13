@@ -13,7 +13,7 @@ vim.cmd[[
 command! -nargs=0 Ag lua require("config.telescope.ag").search()
 ]]
 
-local opts = {noremap = true}
+local opts = {}
 local mappings = {
   {"n", "<Leader>b", [[<Cmd>Telescope buffers<CR>]], opts},
   {"n", "<Leader>f", [[<Cmd>Telescope git_files<CR>]], opts},
@@ -31,7 +31,7 @@ local mappings = {
   {"n", "<space>ca", [[<Cmd>Telescope lsp_code_actions<CR>]], opts}
 }
 for _, val in pairs(mappings) do
-  vim.api.nvim_set_keymap(unpack(val))
+  vim.keymap.set(unpack(val))
 end
 
 tl.load_extension("notify")
