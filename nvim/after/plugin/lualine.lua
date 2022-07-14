@@ -49,7 +49,7 @@ end
 
 lualine.setup {
     options = {
-        theme = "catppuccin",
+        theme = "gruvbox",
         disabled_filetypes = { 'packer' },
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
