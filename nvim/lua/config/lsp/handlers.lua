@@ -23,7 +23,7 @@ local lsp_keymaps = function(bufnr)
     { "n", "[e", [[<Cmd>lua vim.lsp.diagnostic.goto_prev()<CR>]], opts },
   }
   for _, map in pairs(mappings) do
-      vim.keymap.set(bufnr, unpack(map))
+      vim.keymap.set(unpack(map))
   end
 end
 

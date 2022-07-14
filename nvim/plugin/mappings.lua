@@ -15,7 +15,8 @@ function _G.ReloadConfig()
   end
   dofile(vim.env.MYVIMRC)
 end
-keymap("n", "<leader>sv", "<Cmd>lua ReloadConfig()<CR>")
+vim.cmd('command! ReloadConfig lua ReloadConfig()')
+keymap("n", "<leader>sv", "<Cmd>lua ReloadConfig()<CR>", { silent = true, noremap = true })
 
 -- Copiar para o clip board
 keymap("v", "yy" , '"+y')
