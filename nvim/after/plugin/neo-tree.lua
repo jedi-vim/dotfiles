@@ -11,9 +11,10 @@ vim.fn.sign_define("DiagnosticSignInfo", {text = " ", texthl = "DiagnosticSig
 vim.fn.sign_define("DiagnosticSignHint", {text = "", texthl = "DiagnosticSignHint"})
 
 --Mappging
-vim.api.nvim_set_keymap( "n", "<F9>", ":Neotree source=filesystem position=float action=focus<CR>", { noremap = true })
-vim.api.nvim_set_keymap( "n", "<F8>", ":Neotree source=git_status position=float<CR>", { noremap = true })
-vim.api.nvim_set_keymap( "n", "<F7>", ":Neotree source=buffers position=float<CR>", { noremap = true })
+local set_kmap = vim.keymap.set
+set_kmap( "n", "<F9>", ":Neotree source=filesystem position=float action=focus<CR>")
+set_kmap( "n", "<F8>", ":Neotree source=git_status position=float<CR>")
+set_kmap( "n", "<F7>", ":Neotree source=buffers position=float<CR>")
 
 neo_tree.setup({
     close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab

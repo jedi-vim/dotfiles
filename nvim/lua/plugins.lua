@@ -39,9 +39,9 @@ return require("packer").startup {function(use)
   })
   --Themes
   --Remover o commit ao excutar o neovim 0.7
-  -- use {'ellisonleao/gruvbox.nvim', commit='dc6bae9'}
+  use {'ellisonleao/gruvbox.nvim'}
   use({ "catppuccin/nvim", as = "catppuccin" })
-  use 'shaunsingh/nord.nvim'
+  -- use 'shaunsingh/nord.nvim'
   -- use {
   --   'projekt0n/github-nvim-theme',
   --   config = function()
@@ -61,13 +61,13 @@ return require("packer").startup {function(use)
             "nvim-lua/plenary.nvim",
             "nvim-lua/popup.nvim",
        },
-      commit="d88094f"
+      -- commit="d88094f"
   }
 
   -- File Explorer
   use {
       "nvim-neo-tree/neo-tree.nvim",
-       branch = "v2.x",
+       -- branch = "v2.x",
        requires = {
          "nvim-lua/plenary.nvim",
          "kyazdani42/nvim-web-devicons",

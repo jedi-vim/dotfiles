@@ -11,19 +11,19 @@ M.code_action_listener = function()
 end
 
 local lsp_keymaps = function(bufnr)
-  local opts = { silent = true, noremap = true }
+  local opts = { silent = true}
   local mappings = {
     { "n", "gD", [[<Cmd>lua vim.lsp.buf.declaration()<CR>]], opts },
     { "n", "gd", [[<Cmd>lua vim.lsp.buf.definition()<CR>]], opts },
     { "n", "gr", [[<Cmd>lua require('telescope.builtin').lsp_references({ path_display = 'shorten' })<CR>]], opts },
-    { "n", "<leader>bt", [[<Cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], {noremap = true, silent = true},},
+    { "n", "<leader>bt", [[<Cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], opts},
     { "n", "<leader>rn", [[<Cmd>lua vim.lsp.buf.rename()<CR>]], opts },
     { "i", "<C-x>", [[<Cmd>lua vim.lsp.buf.signature_help()<CR>]], opts },
     { "n", "]e", [[<Cmd>lua vim.lsp.diagnostic.goto_next()<CR>]], opts },
     { "n", "[e", [[<Cmd>lua vim.lsp.diagnostic.goto_prev()<CR>]], opts },
   }
   for _, map in pairs(mappings) do
-      vim.api.nvim_buf_set_keymap(bufnr, unpack(map))
+      vim.keymap.set(unpack(map))
   end
 end
 
