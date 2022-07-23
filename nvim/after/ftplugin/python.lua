@@ -8,7 +8,6 @@ opt.expandtab = true
 opt.formatoptions= "jntcoql"
 opt.smartindent = true
 opt.shiftwidth = 4
--- opt.smarttab = true
 opt.softtabstop = 4
 opt.tabstop = 8
 
@@ -19,12 +18,21 @@ local formatting = null_ls.builtins.formatting
 
 local sources = {
     diagnostics.flake8,
-    formatting.black,
+    formatting.black.with({ extra_args = { "--quiet" } }),
     formatting.isort
 }
 
 null_ls.setup({
-    on_attach = require('config.lsp.handlers').on_attach,
     sources = sources,
-    root_dir = nls_utils.root_pattern ".git"
+    root_dir = nls_utils.root_pattern ".git",
+    on_attach = function(client)
+          if client.resolved_capabilities.document_formatting then
+             vim.cmd([[
+              augroup LspFormatting
+                autocmd! * <buffer>
+                autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync()
+              augroup END
+            ]])
+         end
+      end,
 })
