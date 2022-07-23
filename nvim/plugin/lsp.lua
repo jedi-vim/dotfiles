@@ -12,19 +12,10 @@ local opts = {
         ["textDocument/publishDiagnostics"] = vim.lsp.with( vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false }),
     }
 }
-
--- require("config.lsp.null-ls").setup(opts)
-require("config.lsp.notify").setup()
-
 lsp_installer.on_server_ready(function(server)
-    -- if server.name == "pyright" then
-    --     local pyright_opts = require("config.lsp.settings.pyright")
-    --         opts = vim.tbl_deep_extend("force", pyright_opts, opts)
-    -- end
     server:setup(opts)
 end)
 
--- diagnostics
 vim.diagnostic.config({
     virtual_text = false,
     underline = true,
@@ -32,10 +23,8 @@ vim.diagnostic.config({
         source = "always",
     },
     severity_sort = true,
-    --[[ virtual_text = {
-      prefix = "»",
-      spacing = 4,
-    }, ]]
     signs = true,
     update_in_insert = false,
 })
+
+require("config.lsp.notify").setup()
