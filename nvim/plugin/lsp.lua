@@ -3,28 +3,7 @@ if not ok then
   return
 end
 
--- check for missing lsp servers and install them
--- lsp servers
-local required_servers = {
-  "sumneko_lua", -- lua
-  "pyright", -- python
-  "gopls", -- golang
-  "tsserver", -- js, jsx, tsx
-  "bashls", -- bash
-  "yamlls", -- yaml
-  "vimls", -- vim
-  "jsonls", -- json
-  "sqlls", -- sql
-}
-local servers = require("nvim-lsp-installer.servers")
-for _, svr in pairs(required_servers) do
-  local ok, lsp_server = servers.get_server(svr)
-  if ok then
-    if not lsp_server:is_installed() then
-      lsp_server:install()
-    end
-  end
-end
+require('config.lsp.servers').setup()
 
 local opts = {
     on_attach = require('config.lsp.handlers').on_attach,

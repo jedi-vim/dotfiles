@@ -47,14 +47,14 @@ keymap("n", "N", "Nzz")
 
 -- Hlsearch
 opt.hlsearch = true
--- vim.g["incsearch#auto_nohlsearch"] = 1
--- keymap("n", "n",  "<Plug>(incsearch-nohl-n)", {silent = true})
--- keymap("n", "N", "<Plug>(incsearch-nohl-N)", {silent = true})
--- keymap("n", "*", "<Plug>(incsearch-nohl-*)", {silent = true})
--- keymap("n", "#", "<Plug>(incsearch-nohl-#)", {silent = true})
--- keymap("n", "g*", "<Plug>(incsearch-nohl-g*)", {silent = true})
--- keymap("n", "g#", "<Plug>(incsearch-nohl-g#)", {silent = true})
--- keymap("n", "<Esc><Esc>", ":<C-u>nohlsearch<CR>", {noremap = true})
+vim.g["incsearch#auto_nohlsearch"] = 1
+keymap("n", "n",  "<Plug>(incsearch-nohl-n)", {silent = true})
+keymap("n", "N", "<Plug>(incsearch-nohl-N)", {silent = true})
+keymap("n", "*", "<Plug>(incsearch-nohl-*)", {silent = true})
+keymap("n", "#", "<Plug>(incsearch-nohl-#)", {silent = true})
+keymap("n", "g*", "<Plug>(incsearch-nohl-g*)", {silent = true})
+keymap("n", "g#", "<Plug>(incsearch-nohl-g#)", {silent = true})
+keymap("n", "<Esc><Esc>", ":<C-u>nohlsearch<CR>", {noremap = true})
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
