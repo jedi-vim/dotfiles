@@ -20,6 +20,7 @@ opt.expandtab = true
 opt.shiftwidth = 4
 opt.softtabstop = 4
 opt.foldlevel=5
+opt.termguicolors = true
 --
 -- Manter CWD com o arquivo aberto
 vim.cmd [[
@@ -61,12 +62,6 @@ augroup END
            autocmd TextYankPost * silent! lua vim.highlight.on_yank()
              augroup end
  ]]
-
---Map blankline
-vim.g.indent_blankline_char = '┊'
-vim.g.indent_blankline_filetype_exclude = { 'help', 'packer' }
-vim.g.indent_blankline_buftype_exclude = { 'terminal', 'nofile' }
-vim.g.indent_blankline_show_trailing_blankline_indent = false
 
 --notify
 vim.notify = require("notify")

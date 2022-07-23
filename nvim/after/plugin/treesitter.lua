@@ -76,3 +76,5 @@ require'treesitter-context'.setup{
 
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr"
+
+vim.keymap.set("n", "<leader>pg", "[[<cmd>TSPlaygroundToggle<cr>]]")
