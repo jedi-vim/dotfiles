@@ -22,6 +22,7 @@ local lsp_keymaps = function(bufnr)
     { "i", "<C-x>", [[<Cmd>lua vim.lsp.buf.signature_help()<CR>]], opts },
     { "n", "]e", [[<Cmd>lua vim.lsp.diagnostic.goto_next()<CR>]], opts },
     { "n", "[e", [[<Cmd>lua vim.lsp.diagnostic.goto_prev()<CR>]], opts },
+    { "n", "<leader>fm", [[<cmd> lua vim.lsp.buf.formatting_sync()<CR>]], opts}
   }
   for _, map in pairs(mappings) do
       vim.keymap.set(unpack(map))
