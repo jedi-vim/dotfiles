@@ -6,7 +6,18 @@ end
 local actions = require("telescope.actions")
 
 tl.setup(
-  {defaults = {mappings = {i = {["<Esc>"] = actions.close}}}}
+  {
+    defaults = {
+      mappings = {i = {["<Esc>"] = actions.close}}
+    },
+    project = {
+        base_dirs = {
+          '~/workspace/',
+          {'~/.config/', max_depth = 1},
+        },
+        theme = "dropdown"
+      }
+    }
 )
 
 vim.cmd[[
@@ -28,10 +39,14 @@ local mappings = {
   -- lsp symbols
   {"n", "<Leader>t", [[<Cmd>Telescope lsp_dynamic_workspace_symbols<CR>]], opts},
   -- lsp  code actions
-  {"n", "<space>ca", [[<Cmd>Telescope lsp_code_actions<CR>]], opts}
+  {"n", "<space>ca", [[<Cmd>Telescope lsp_code_actions<CR>]], opts},
+  -- Projects
+  {'n', '<C-p>', ":lua require'telescope'.extensions.project.project{}<CR>", opts }
 }
 for _, val in pairs(mappings) do
   vim.keymap.set(unpack(val))
 end
 
-tl.load_extension("notify")
+tl.load_extension "notify"
+tl.load_extension "file_browser"
+tl.load_extension "project"

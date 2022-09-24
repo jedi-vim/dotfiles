@@ -60,6 +60,8 @@ return require("packer").startup {function(use)
       requires = {
             "nvim-lua/plenary.nvim",
             "nvim-lua/popup.nvim",
+            "nvim-telescope/telescope-project.nvim",
+            "nvim-telescope/telescope-file-browser.nvim"
        },
       -- commit="d88094f"
   }
