@@ -29,6 +29,7 @@ local mappings = {
   {"n", "<Leader>b", [[<Cmd>Telescope buffers<CR>]], opts},
   {"n", "<Leader>f", [[<Cmd>Telescope git_files<CR>]], opts},
   {"n", "<Leader>h", [[<Cmd>Telescope oldfiles<CR>]], opts},
+  {"n", "<Leader>jp", [[<Cmd>Telescope jumplist<CR>]], opts},
   {"n", "<F10>", [[<Cmd>Telescope help_tags<CR>]], opts},
   {"n", "<Leader>g", [[<Cmd>Ag<CR>]], opts},
   -- git
