@@ -74,6 +74,7 @@ return require("packer").startup {function(use)
          "MunifTanjim/nui.nvim"
        }
   }
+  use "simrat39/symbols-outline.nvim"
 
   use {
     "gelguy/wilder.nvim",
