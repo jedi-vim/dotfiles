@@ -63,13 +63,11 @@ return require("packer").startup {function(use)
             "nvim-telescope/telescope-project.nvim",
             "nvim-telescope/telescope-file-browser.nvim"
        },
-      -- commit="d88094f"
   }
 
   -- File Explorer
   use {
       "nvim-neo-tree/neo-tree.nvim",
-       -- branch = "v2.x",
        requires = {
          "nvim-lua/plenary.nvim",
          "kyazdani42/nvim-web-devicons",
