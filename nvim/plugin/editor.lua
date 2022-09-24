@@ -63,5 +63,16 @@ augroup END
              augroup end
  ]]
 
+local api = vim.api
+api.nvim_create_autocmd({'BufEnter', "BufAdd", "BufNew", "BufNewFile", "BufWinEnter"},
+    {
+        group = api.nvim_create_augroup("TS_FOLD_WORKAROUND", {}),
+        callback= function ()
+            opt.foldmethod = "expr"
+            opt.foldexpr = "nvim_treesitter#foldexpr()"
+        end
+    }
+)
+
 --notify
 vim.notify = require("notify")
