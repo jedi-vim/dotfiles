@@ -58,4 +58,10 @@ keymap("n", "<Esc><Esc>", ":<C-u>nohlsearch<CR>", {noremap = true})
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
+-- Delete a word backwards
+keymap("n", "dw", 'vb" _d')
+
+-- Select all
+keymap('n', '<leader>sa', 'gg<S-v>G')
+
 
