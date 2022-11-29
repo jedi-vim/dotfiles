@@ -1,4 +1,8 @@
-vim.g.symbols_outline = {
+local ok, symbols_outline = pcall(require, "symbols-outline")
+if not ok then
+    return
+end
+symbols_outline.setup({
     highlight_hovered_item = true,
     show_guides = true,
     auto_preview = false, -- experimental
@@ -12,6 +16,6 @@ vim.g.symbols_outline = {
         rename_symbol = "r",
         code_actions = "a"
     }
-}
+})
 
 vim.keymap.set("n", "<F6>", "[[ <Cmd>SymbolsOutline<CR> ]]", {})

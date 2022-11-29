@@ -21,10 +21,12 @@ return require("packer").startup {function(use)
     opt=false
   }
   use 'tpope/vim-commentary' -- "gc" to comment visual regions/lines
+  use 'tpope/vim-sleuth' -- automatically adjusts 'shiftwidth' and 'expandtab'
   use 'mg979/vim-visual-multi' -- Multicursor
   use 'haya14busa/incsearch.vim' -- Increase search
   use 'tpope/vim-surround' -- Surround sugar
   use 'rcarriga/nvim-notify'
+  use { 'tamton-aquib/zone.nvim' } -- A screensaver plugin for neovim
   
   use({
         "ethanholz/nvim-lastplace",

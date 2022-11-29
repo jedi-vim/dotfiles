@@ -5,7 +5,7 @@ local formatting = null_ls.builtins.formatting
 
 local sources = {
      -- Python
-    diagnostics.flake8,
+    -- diagnostics.flake8,
     formatting.black.with({ extra_args = { "--quiet" } }),
     formatting.isort,
 
