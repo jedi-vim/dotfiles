@@ -52,6 +52,14 @@ treesitter.setup {
           goto_node = '<cr>',
           show_help = '?',
         },
+     },
+     textobjects = {
+         move = {
+             enable = true,
+         },
+        swap = {
+             enable = true,
+        },
      }
 }
 

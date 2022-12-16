@@ -100,7 +100,8 @@ return require("packer").startup {function(use)
         "nvim-treesitter/nvim-treesitter-refactor",
         "romgrk/nvim-treesitter-context",
         "p00f/nvim-ts-rainbow",
-        "nvim-treesitter/playground"
+        "nvim-treesitter/playground",
+        "nvim-treesitter/nvim-treesitter-textobjects"
     }
   }
 
