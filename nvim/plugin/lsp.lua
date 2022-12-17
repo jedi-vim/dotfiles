@@ -1,30 +1,27 @@
-local ok, lsp_installer = pcall(require, "nvim-lsp-installer")
-if not ok then
-  return
-end
+require("config.lsp.notify").setup()
+require("config.lsp.servers").setup()
+require("config.lsp.diagnostic").setup()
 
-require('config.lsp.servers').setup()
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics,
+  { virtual_text = false })
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
 
-local opts = {
-    on_attach = require('config.lsp.handlers').on_attach,
-    capabilities = require('config.lsp.handlers').capabilities,
-    handlers = {
-        ["textDocument/publishDiagnostics"] = vim.lsp.with( vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false }),
-    }
-}
-lsp_installer.on_server_ready(function(server)
-    server:setup(opts)
-end)
-
-vim.diagnostic.config({
-    virtual_text = false,
-    underline = true,
-    float = {
-        source = "always",
-    },
-    severity_sort = true,
-    signs = true,
-    update_in_insert = false,
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local bufnr = args.bufnr
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    require('config.lsp.handlers').on_attach(client, bufnr)
+  end
 })
 
-require("config.lsp.notify").setup()
+-- Lua files must be always formatted
+local autoformat_patterns = {
+  "*.lua",
+}
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = autoformat_patterns,
+  callback = function(_)
+    vim.lsp.buf.format()
+  end,
+})

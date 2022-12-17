@@ -238,6 +238,11 @@ _G.packer_plugins = {
     path = "/home/leonam/.local/share/nvim/site/pack/packer/start/nvim-treesitter-refactor",
     url = "https://github.com/nvim-treesitter/nvim-treesitter-refactor"
   },
+  ["nvim-treesitter-textobjects"] = {
+    loaded = true,
+    path = "/home/leonam/.local/share/nvim/site/pack/packer/start/nvim-treesitter-textobjects",
+    url = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
+  },
   ["nvim-ts-rainbow"] = {
     loaded = true,
     path = "/home/leonam/.local/share/nvim/site/pack/packer/start/nvim-ts-rainbow",
@@ -333,6 +338,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/leonam/.local/share/nvim/site/pack/packer/start/wilder.nvim",
     url = "https://github.com/gelguy/wilder.nvim"
+  },
+  ["zone.nvim"] = {
+    loaded = true,
+    path = "/home/leonam/.local/share/nvim/site/pack/packer/start/zone.nvim",
+    url = "https://github.com/tamton-aquib/zone.nvim"
   }
 }
 
