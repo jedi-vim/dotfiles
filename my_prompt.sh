@@ -35,3 +35,8 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 
 # Golang
 export PATH=$PATH:/usr/local/go/bin
+
+# LuaRocks
+export LUA_PATH='/usr/local/share/lua/5.1/?.lua;./?.lua;/home/linuxbrew/.linuxbrew/Cellar/luajit/2.0.5/share/luajit-2.0.5/?.lua;/usr/local/share/lua/5.1/?/init.lua;/home/linuxbrew/.linuxbrew/Cellar/luajit/2.0.5/share/lua/5.1/?.lua;/home/linuxbrew/.linuxbrew/Cellar/luajit/2.0.5/share/lua/5.1/?/init.lua;/home/leonam/.luarocks/share/lua/5.1/?.lua;/home/leonam/.luarocks/share/lua/5.1/?/init.lua'
+export LUA_CPATH='./?.so;/usr/local/lib/lua/5.1/?.so;/home/linuxbrew/.linuxbrew/Cellar/luajit/2.0.5/lib/lua/5.1/?.so;/usr/local/lib/lua/5.1/loadall.so;/home/leonam/.luarocks/lib/lua/5.1/?.so'
+export PATH='/home/leonam/.luarocks/bin:/home/leonam/.pyenv/plugins/pyenv-virtualenv/shims:/home/leonam/.pyenv/shims:/home/leonam/.nvm/versions/node/v14.15.0/bin:/home/leonam/.poetry/bin/:/home/leonam/.local/bin/:/home/leonam/.pyenv/bin:/home/leonam/bin:/usr/local/bin:/home/leonam/.local/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/home/leonam/.poetry/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/snap/bin:/usr/local/go/bin'
