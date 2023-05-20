@@ -37,10 +37,10 @@ return require("packer").startup { function(use)
       })
     end,
   })
+
   --Themes
-  --Remover o commit ao excutar o neovim 0.7
   use { 'ellisonleao/gruvbox.nvim' }
-  use({ "catppuccin/nvim", as = "catppuccin" })
+  -- use({ "catppuccin/nvim", as = "catppuccin" })
   -- use 'shaunsingh/nord.nvim'
   -- use {
   --   'projekt0n/github-nvim-theme',
@@ -63,7 +63,8 @@ return require("packer").startup { function(use)
       "nvim-lua/plenary.nvim",
       "nvim-lua/popup.nvim",
       "nvim-telescope/telescope-project.nvim",
-      "nvim-telescope/telescope-file-browser.nvim"
+      "nvim-telescope/telescope-file-browser.nvim",
+      "nvim-telescope/telescope-ui-select.nvim"
     },
   }
 
@@ -167,6 +168,14 @@ return require("packer").startup { function(use)
       { 'kyazdani42/nvim-web-devicons', opt = true },
       { 'nvim-lua/lsp-status.nvim' },
     },
+  }
+
+  -- A neovim plugin that shows colorcolumn dynamically
+  use {
+    'Bekaboo/deadcolumn.nvim',
+    config = function()
+      require("deadcolumn").setup {}
+    end
   }
 
   if packer_bootstrap then
