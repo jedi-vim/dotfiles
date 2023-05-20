@@ -9,23 +9,23 @@ local actions = nls.builtins.code_actions
 
 local sources = {
   -- formatting
-  -- formatting.prettierd,
-  -- formatting.shfmt,
-  -- formatting.fixjson,
-  -- formatting.black,
-  -- formatting.isort,
+  formatting.prettierd,
+  formatting.shfmt,
+  formatting.fixjson,
+  formatting.black,
+  formatting.isort,
 
   -- diagnostics
-  -- diagnostics.write_good,
+  diagnostics.write_good,
   -- diagnostics.eslint_d,
   -- diagnostics.flake8,
   -- diagnostics.credo,
   -- diagnostics.zsh,
 
   -- code actions
-  -- actions.gitsigns,
+  actions.gitsigns,
   -- actions.gitrebase,
-  -- actions.refactoring
+  actions.refactoring
 
   -- hover
   -- b.hover.dictionary

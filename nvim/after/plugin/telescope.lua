@@ -1,11 +1,11 @@
-local ok, tl = pcall(require, "telescope")
+local ok, telescope = pcall(require, "telescope")
 if not ok then
-    return
+  return
 end
 
 local actions = require("telescope.actions")
 
-tl.setup(
+telescope.setup(
   {
     defaults = {
       mappings = { i = { ["<Esc>"] = actions.close } }
@@ -51,6 +51,7 @@ for _, val in pairs(mappings) do
   vim.keymap.set(unpack(val))
 end
 
-tl.load_extension "notify"
-tl.load_extension "file_browser"
-tl.load_extension "project"
+telescope.load_extension "notify"
+telescope.load_extension "file_browser"
+telescope.load_extension "project"
+telescope.load_extension "ui-select"

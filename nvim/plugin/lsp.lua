@@ -1,6 +1,7 @@
 require("config.lsp.notify").setup()
 require("config.lsp.servers").setup()
 require("config.lsp.diagnostic").setup()
+require("config.lsp.null-ls").setup({})
 
 -- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics,
 --   { virtual_text = false })
