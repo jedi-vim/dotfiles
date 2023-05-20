@@ -43,9 +43,7 @@ local mappings = {
   { "n", "<Leader>gs", [[<Cmd>Telescope git_status<CR>]], opts },
   { "n", "<Leader>gb", [[<Cmd>Telescope git_branches<CR>]], opts },
   -- lsp symbols
-  {"n", "<Leader>t", [[<Cmd>Telescope lsp_dynamic_workspace_symbols<CR>]], opts},
-  -- lsp  code actions
-  {"n", "<space>ca", [[<Cmd>Telescope lsp_code_actions<CR>]], opts},
+  { "n", "<Leader>t", [[<Cmd>Telescope lsp_dynamic_workspace_symbols<CR>]], opts },
   -- Projects
   { 'n', '<C-p>', ":lua require'telescope'.extensions.project.project{}<CR>", opts }
 }
