@@ -14,14 +14,3 @@ vim.api.nvim_create_autocmd("LspAttach", {
     require('config.lsp.handlers').on_attach(client, bufnr)
   end
 })
-
--- Lua files must be always formatted
-local autoformat_patterns = {
-  "*.lua",
-}
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = autoformat_patterns,
-  callback = function(_)
-    vim.lsp.buf.format()
-  end,
-})
