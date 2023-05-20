@@ -157,7 +157,7 @@ return require("packer").startup { function(use)
     "folke/trouble.nvim",
     config = function()
       require("trouble").setup({})
-      vim.api.nvim_set_keymap("n", "<F6>", "<Cmd>Trouble document_diagnostics<CR>", { silent = true, noremap = true })
+      vim.api.nvim_set_keymap("n", "<F5>", "<Cmd>Trouble document_diagnostics<CR>", { silent = true, noremap = true })
     end,
   }
 
