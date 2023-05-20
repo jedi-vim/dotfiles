@@ -1,20 +1,20 @@
 local M = {}
 
 M.setup = function()
-
   local required_servers = {
     "sumneko_lua", -- lua
-    "pyright", -- python
-    "gopls", -- golang
-    "tsserver", -- js, jsx, tsx
-    "bashls", -- bash
-    "yamlls", -- yaml
-    "vimls", -- vim
-    "jsonls", -- json
-    "sqlls", -- sql
+    "pyright",     -- python
+    "gopls",       -- golang
+    "tsserver",    -- js, jsx, tsx
+    "bashls",      -- bash
+    "yamlls",      -- yaml
+    "vimls",       -- vim
+    "jsonls",      -- json
+    "sqlls",       -- sql
   }
 
   local lspconfig = require("lspconfig")
+
   require("mason").setup {}
   require("mason-lspconfig").setup {
     ensure_installed = required_servers

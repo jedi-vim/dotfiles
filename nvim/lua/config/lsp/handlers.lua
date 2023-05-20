@@ -6,23 +6,24 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {properties
 M.capabilities = capabilities
 
 
-M.on_attach = function(client, bufnr)
+M.on_attach = function(client, _)
   -- Lsp Mappings
-  local opts = { silent = true}
+  local opts = { silent = true }
   local mappings = {
-    { "n", "gD", [[<Cmd>lua vim.lsp.buf.declaration()<CR>]], opts },
-    { "n", "gd", [[<Cmd>lua vim.lsp.buf.definition()<CR>]], opts },
-    { "n", "gr", [[<Cmd>lua require('telescope.builtin').lsp_references({ path_display = 'shorten' })<CR>]], opts },
-    { "n", "<leader>bt", [[<Cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], opts},
-    { "n", "<leader>rn", [[<Cmd>lua vim.lsp.buf.rename()<CR>]], opts },
-    { "n", "K", [[<cmd>lua vim.lsp.buf.hover()<CR>]], opts},
-    { "i", "<C-x>", [[<Cmd>lua vim.lsp.buf.signature_help()<CR>]], opts },
-    { "n", "]e", [[<Cmd>lua vim.diagnostic.goto_next()<CR>]], opts },
-    { "n", "[e", [[<Cmd>lua vim.diagnostic.goto_prev()<CR>]], opts },
-    { "n", "<leader>fm", [[<cmd> lua vim.lsp.buf.formatting_sync()<CR>]], opts}
+    { "n", "gD",         [[<Cmd>lua vim.lsp.buf.declaration()<CR>]],                                                 opts },
+    { "n", "gd",         [[<Cmd>lua vim.lsp.buf.definition()<CR>]],                                                  opts },
+    { "n", "<leader>rn", [[<Cmd>lua vim.lsp.buf.rename()<CR>]],                                                      opts },
+    { "i", "<C-x>",      [[<Cmd>lua vim.lsp.buf.signature_help()<CR>]],                                              opts },
+    { "n", "K",          [[<cmd>lua vim.lsp.buf.hover()<CR>]],                                                       opts },
+    { "n", "<leader>fm", [[<cmd> lua vim.lsp.buf.format()<CR>]],                                                     opts },
+    { "n", "<leader>ca", [[<cmd> lua vim.lsp.buf.code_action()<CR>]],                                                opts },
+    { "n", "gr",         [[<Cmd>lua require('telescope.builtin').lsp_references({ path_display = 'shorten' })<CR>]], opts },
+    { "n", "<leader>bt", [[<Cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]],                       opts },
+    { "n", "]e",         [[<Cmd>lua vim.diagnostic.goto_next()<CR>]],                                                opts },
+    { "n", "[e",         [[<Cmd>lua vim.diagnostic.goto_prev()<CR>]],                                                opts }
   }
   for _, map in pairs(mappings) do
-      vim.keymap.set(unpack(map))
+    vim.keymap.set(unpack(map))
   end
 
   -- Set autocommands conditional on server_capabilities

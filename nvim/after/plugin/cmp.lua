@@ -1,6 +1,6 @@
 local ok, cmp = pcall(require, "cmp")
 if not ok then
-    return
+  return
 end
 
 local compare = require("cmp.config.compare")
@@ -9,19 +9,19 @@ local luasnip = require('luasnip')
 
 cmp.setup({
   snippet = {
-        expand = function(args)
-            luasnip.lsp_expand(args.body)
-        end,
+    expand = function(args)
+      luasnip.lsp_expand(args.body)
+    end,
   },
   sources = {
-      { name = "luasnip" },
-      { name = "treesitter" },
-      { name = "nvim_lsp" },
-      { name = "tags" },
-      { name = "buffer" },
-      { name = 'cmdline' },
-      { name = "path" },
-      { name = "nvim_lua" },
+    { name = "luasnip" },
+    { name = "treesitter" },
+    { name = "nvim_lsp" },
+    { name = "tags" },
+    { name = "buffer" },
+    { name = 'cmdline' },
+    { name = "path" },
+    { name = "nvim_lua" },
   },
   mapping = {
     ["<C-p>"] = cmp.mapping.select_prev_item(),

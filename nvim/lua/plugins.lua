@@ -20,10 +20,10 @@ return require("packer").startup { function(use)
     'wbthomason/packer.nvim',
     opt = false
   }
-  use 'tpope/vim-commentary' -- "gc" to comment visual regions/lines
-  use 'mg979/vim-visual-multi' -- Multicursor
+  use 'tpope/vim-commentary'     -- "gc" to comment visual regions/lines
+  use 'mg979/vim-visual-multi'   -- Multicursor
   use 'haya14busa/incsearch.vim' -- Increase search
-  use 'tpope/vim-surround' -- Surround sugar
+  use 'tpope/vim-surround'       -- Surround sugar
   use 'rcarriga/nvim-notify'
 
   use({
@@ -49,10 +49,12 @@ return require("packer").startup { function(use)
   --   end
   -- }
 
-
+  -- A lua fork of vim-devicons. This plugin provides the same icons as well as colors for each icon
   use "kyazdani42/nvim-web-devicons"
-  use "lukas-reineke/indent-blankline.nvim" -- Add indentation guides even on blank lines
-  use 'mhinz/vim-startify' -- Friendly start screen
+  -- Add indentation guides even on blank lines
+  use "lukas-reineke/indent-blankline.nvim"
+  -- Friendly start screen
+  use 'mhinz/vim-startify'
 
   -- UI to select things (files, grep results, open buffers...)
   use {
@@ -74,8 +76,10 @@ return require("packer").startup { function(use)
       "MunifTanjim/nui.nvim"
     }
   }
+  -- A tree like view for symbols in Neovim
   use "simrat39/symbols-outline.nvim"
 
+  -- Adds new features and capabilities to wildmenu
   use {
     "gelguy/wilder.nvim",
     run = ":UpdateRemotePlugins"
@@ -85,7 +89,7 @@ return require("packer").startup { function(use)
     "akinsho/nvim-bufferline.lua",
     config = [[require("bufferline").setup {}]],
   }
-  -- -- Add git related info in the signs columns and popups
+  -- Add git related info in the signs columns and popups
   use {
     'lewis6991/gitsigns.nvim',
     requires = { 'nvim-lua/plenary.nvim' },

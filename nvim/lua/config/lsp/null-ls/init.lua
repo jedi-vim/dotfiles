@@ -28,7 +28,7 @@ local sources = {
   -- actions.refactoring
 
   -- hover
-  -- b.hover.dictionary,
+  -- b.hover.dictionary
 }
 
 function M.setup(opts)
