@@ -1,9 +1,21 @@
 local M = {}
 
+
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.completion.completionItem.resolveSupport = {properties = { "documentation", "detail", "additionalTextEdits" }}
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = { "documentation", "detail",
+    "additionalTextEdits" }
+}
+capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 M.capabilities = capabilities
+
+
+M.handlers = {
+  ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false }),
+  ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
+  ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
+}
 
 
 M.on_attach = function(client, _)
@@ -26,20 +38,40 @@ M.on_attach = function(client, _)
     vim.keymap.set(unpack(map))
   end
 
-  -- Set autocommands conditional on server_capabilities
-  if client.server_capabilities.document_highlight then
-      vim.api.nvim_exec(
-      [[
-        augroup lsp_document_highlight
-        autocmd! * <buffer>
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-        augroup END
-      ]],
-      false
-      )
+  -- Disnostics
+  local diagnostic = vim.api.nvim_create_augroup("DiagnosticFloat", { clear = true })
+  vim.api.nvim_create_autocmd("CursorHold", {
+    callback = function()
+      vim.diagnostic.open_float(nil, { focus = false })
+    end,
+    group = diagnostic,
+  })
+
+  -- Signs
+  local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+  for type, icon in pairs(signs) do
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
   end
 
+  -- Hightlight
+  if client.server_capabilities.document_highlight then
+    local lsp_doc_highlight = vim.api.nvim_create_augroup("LspDocumentHighlight", {})
+    vim.api.nvim_create_autocmd("CursorHold", {
+      group = lsp_doc_highlight,
+      pattern = "<buffer>",
+      callback = function()
+        vim.lsp.buf.document_highlight()
+      end
+    })
+    vim.api.nvim_create_autocmd("CursorMoved", {
+      group = lsp_doc_highlight,
+      pattern = "<buffer>",
+      callback = function()
+        vim.lsp.buf.clear_references()
+      end
+    })
+  end
   require('lsp_signature').on_attach(client)
 end
 
