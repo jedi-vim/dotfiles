@@ -5,9 +5,9 @@ alias g=git
 alias tor="/opt/tor-browser_en-US/Browser/start-tor-browser -detach"
 
 # pyenv
- export PATH="/home/leonam/.pyenv/bin:$PATH"
- eval "$(pyenv init -)"
- eval "$(pyenv virtualenv-init -)"
+export PATH="/home/leonam/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 # Python Local
 export PATH="$HOME/.poetry/bin/:$HOME/.local/bin/:$PATH"
