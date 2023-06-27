@@ -178,6 +178,12 @@ return require("packer").startup { function(use)
     end
   }
 
+  -- A search panel for neovim.
+  use {
+    'nvim-pack/nvim-spectre',
+    requires= 'nvim-lua/plenary.nvim',
+  }
+
   if packer_bootstrap then
     vim.notify("Installing plugins...")
     require("packer").sync()
