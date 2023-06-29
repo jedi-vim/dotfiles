@@ -20,10 +20,6 @@ telescope.setup(
   }
 )
 
-vim.cmd [[
-command! -nargs=0 Ag lua require("config.telescope.ag").search()
-]]
-
 local opts = {}
 local mappings = {
   -- Buffers Opened
