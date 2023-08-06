@@ -31,8 +31,6 @@ local mappings = {
   -- Jumped List
   { "n", "<Leader>jp", [[<Cmd>Telescope jumplist<CR>]], opts },
   { "n", "<F10>", [[<Cmd>Telescope help_tags<CR>]], opts },
-  --Silver Seacher, made by me
-  { "n", "<Leader>g", [[<Cmd>Ag<CR>]], opts },
   -- Buffer Commits
   { "n", "<Leader>bc", [[<Cmd>Telescope git_bcommits<CR>]], opts },
   -- Git Status
