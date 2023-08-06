@@ -6,7 +6,6 @@ opt.colorcolumn = "80"
 opt.copyindent = true
 opt.expandtab = true
 opt.formatoptions = "jntcoql"
--- opt.smartindent = true
 opt.shiftwidth = 4
 opt.softtabstop = 4
 opt.tabstop = 8
