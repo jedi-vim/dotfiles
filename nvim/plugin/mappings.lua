@@ -46,7 +46,7 @@ keymap("n", "n", "nzz")
 keymap("n", "N", "Nzz")
 
 -- Hlsearch
-opt.hlsearch = true
+vim.opt.hlsearch = true
 vim.g["incsearch#auto_nohlsearch"] = 1
 keymap("n", "n",  "<Plug>(incsearch-nohl-n)", {silent = true})
 keymap("n", "N", "<Plug>(incsearch-nohl-N)", {silent = true})
