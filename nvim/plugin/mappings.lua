@@ -14,6 +14,7 @@ function _G.ReloadConfig()
     end
   end
   dofile(vim.env.MYVIMRC)
+  vim.notify("Config reloaded")
 end
 vim.cmd('command! ReloadConfig lua ReloadConfig()')
 keymap("n", "<leader>sv", "<Cmd>lua ReloadConfig()<CR>", { silent = true, noremap = true })
