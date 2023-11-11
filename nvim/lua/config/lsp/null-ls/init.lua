@@ -17,7 +17,7 @@ local sources = {
 
   -- diagnostics
   diagnostics.write_good,
-  -- diagnostics.eslint_d,
+  diagnostics.eslint_d,
   -- diagnostics.flake8,
   -- diagnostics.credo,
   -- diagnostics.zsh,
