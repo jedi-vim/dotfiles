@@ -1,5 +1,5 @@
 -- Configurações gerais
-opt = vim.o
+local opt = vim.o
 opt.number = true
 opt.autoindent = true
 opt.incsearch = true
@@ -14,13 +14,13 @@ opt.updatetime= 100
 opt.hidden = true
 opt.splitbelow = true
 opt.splitright = true
+opt.termguicolors = true
 
 -- Indentation default
 opt.expandtab = true
 opt.shiftwidth = 4
 opt.softtabstop = 4
 opt.foldlevel=5
-opt.termguicolors = true
 --
 -- Manter CWD com o arquivo aberto
 vim.cmd [[
