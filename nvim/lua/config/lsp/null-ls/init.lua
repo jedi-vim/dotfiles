@@ -25,7 +25,7 @@ local sources = {
   -- code actions
   actions.gitsigns,
   -- actions.gitrebase,
-  actions.refactoring
+  -- actions.refactoring
 
   -- hover
   -- b.hover.dictionary
