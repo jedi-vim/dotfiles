@@ -90,6 +90,8 @@ return require("packer").startup { function(use)
     "akinsho/nvim-bufferline.lua",
     config = [[require("bufferline").setup {}]],
   }
+  -- a smooth scrolling neovim plugin written in lua
+  use 'karb94/neoscroll.nvim'
   -- Add git related info in the signs columns and popups
   use {
     'lewis6991/gitsigns.nvim',
@@ -112,7 +114,7 @@ return require("packer").startup { function(use)
   use "folke/twilight.nvim"
 
   -- Docs and completion for the nvim lua API.
-  use "folke/lua-dev.nvim"
+  use "folke/neodev.nvim"
 
   -- Quickstart configurations for the Nvim LSP client
   use {
@@ -121,6 +123,8 @@ return require("packer").startup { function(use)
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       "ray-x/lsp_signature.nvim",
+      { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+
     }
   }
 
