@@ -4,5 +4,6 @@
 !.gitignore
 !my_prompt.sh
 !.configure-env.sh
+!.pre-configure-env.sh
 !zshrc
 !Dockerfile
