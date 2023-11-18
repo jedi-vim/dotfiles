@@ -1,6 +1,6 @@
 # Alias
 alias k=kubectl
-alias v=nvim-0.8.2
+alias v=nvim-0.8.1
 alias g=git
 
 export BASH_VERSION=$(zsh --version)

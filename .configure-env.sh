@@ -15,7 +15,7 @@ echo "\n\n######### Installing NVM $=#####"
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
 
 echo "\n\n########## Neovim ##############"
-NEOVIM_VERSION="0.8.2"
+NEOVIM_VERSION="0.8.1"
 curl -LO https://github.com/neovim/neovim/releases/download/v$NEOVIM_VERSION/nvim.appimage
 mkdir -p $HOME/.local/bin/ && mv nvim.appimage $HOME/.local/bin/nvim && chmod u+x $HOME/.local/bin/nvim
 ln -s $HOME/.local/bin/nvim $HOME/.local/bin/nvim-$NEOVIM_VERSION
