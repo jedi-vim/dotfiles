@@ -98,7 +98,8 @@ return require("packer").startup { function(use)
   use 'karb94/neoscroll.nvim'
   -- Add git related info in the signs columns and popups
   use {
-    'lewis6991/gitsigns.nvim',
+    'lewis6991/gitsigns.nvim', 
+    tag="v0.6",
     requires = { 'nvim-lua/plenary.nvim' },
   }
   -- Sintax hihjlight based on language
@@ -188,7 +189,8 @@ return require("packer").startup { function(use)
 
   -- NeoGit
   use {
-    'TimUntersberger/neogit',
+    'NeogitOrg/neogit',
+    commit="089d388876a535032ac6a3f80e19420f09e4ddda",
     requires = 'nvim-lua/plenary.nvim',
     config= function()
       local neogit = require("neogit")
