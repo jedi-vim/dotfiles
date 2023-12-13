@@ -39,7 +39,7 @@ return require("packer").startup { function(use)
   })
 
   --Themes
-  use { 'ellisonleao/gruvbox.nvim' }
+  use { 'ellisonleao/gruvbox.nvim' , tag="1.0.0" }
   -- use({ "catppuccin/nvim", as = "catppuccin" })
   -- use 'shaunsingh/nord.nvim'
   -- use {
