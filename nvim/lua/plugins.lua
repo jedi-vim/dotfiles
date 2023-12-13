@@ -52,13 +52,17 @@ return require("packer").startup { function(use)
   -- A lua fork of vim-devicons. This plugin provides the same icons as well as colors for each icon
   use "kyazdani42/nvim-web-devicons"
   -- Add indentation guides even on blank lines
-  use "lukas-reineke/indent-blankline.nvim"
+  use { 
+    "lukas-reineke/indent-blankline.nvim", 
+    tag="v2.20.0"
+  }
   -- Friendly start screen
   use 'mhinz/vim-startify'
 
   -- UI to select things (files, grep results, open buffers...)
   use {
     "nvim-telescope/telescope.nvim",
+    tag="0.1.1",
     requires = {
       "nvim-lua/plenary.nvim",
       "nvim-lua/popup.nvim",
