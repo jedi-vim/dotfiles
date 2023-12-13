@@ -46,4 +46,7 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 # Golang
 export PATH=$PATH:/usr/local/go/bin
 
+# HomeBrew
+export PATH=$HOME/brew/bin:$PATH
+
 source $ZSH/oh-my-zsh.sh
