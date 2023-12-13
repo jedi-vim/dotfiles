@@ -5,7 +5,7 @@ rm $HOME/.zshrc && ln -s $HOME/.config/zshrc $HOME/.zshrc
 
 echo "\n\n####### Install HomeBrew ######"
 git clone https://github.com/Homebrew/brew
-export PATH=$HOME/homebrew/bin:$PATH
+export PATH=$HOME/brew/bin:$PATH
 brew install gnu-sed ripgrep the_silver_searcher pyenv
 
 echo "\n\n####### Kitty ################"
