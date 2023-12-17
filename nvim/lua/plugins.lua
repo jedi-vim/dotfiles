@@ -49,8 +49,6 @@ return require("packer").startup { function(use)
   --   end
   -- }
 
-  -- A lua fork of vim-devicons. This plugin provides the same icons as well as colors for each icon
-  use "kyazdani42/nvim-web-devicons"
   -- Add indentation guides even on blank lines
   use { 
     "lukas-reineke/indent-blankline.nvim", 
@@ -92,7 +90,6 @@ return require("packer").startup { function(use)
   -- buffer tabs at top
   use {
     "akinsho/nvim-bufferline.lua",
-    config = [[require("bufferline").setup {}]],
   }
   -- a smooth scrolling neovim plugin written in lua
   use 'karb94/neoscroll.nvim'
@@ -205,6 +202,9 @@ return require("packer").startup { function(use)
     'nvim-pack/nvim-spectre',
     requires= 'nvim-lua/plenary.nvim',
   }
+
+  -- A lua fork of vim-devicons. This plugin provides the same icons as well as colors for each icon
+  use { "kyazdani42/nvim-web-devicons", tag="nerd-v2-compat" }
 
   if packer_bootstrap then
     vim.notify("Installing plugins...")

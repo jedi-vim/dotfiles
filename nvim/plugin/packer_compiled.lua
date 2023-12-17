@@ -79,11 +79,6 @@ _G.packer_plugins = {
     path = "/home/leonam/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
-  catppuccin = {
-    loaded = true,
-    path = "/home/leonam/.local/share/nvim/site/pack/packer/start/catppuccin",
-    url = "https://github.com/catppuccin/nvim"
-  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/leonam/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -124,6 +119,17 @@ _G.packer_plugins = {
     path = "/home/leonam/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["deadcolumn.nvim"] = {
+    config = { "\27LJ\2\n<\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\15deadcolumn\frequire\0" },
+    loaded = true,
+    path = "/home/leonam/.local/share/nvim/site/pack/packer/start/deadcolumn.nvim",
+    url = "https://github.com/Bekaboo/deadcolumn.nvim"
+  },
+  ["fidget.nvim"] = {
+    loaded = true,
+    path = "/home/leonam/.local/share/nvim/site/pack/packer/start/fidget.nvim",
+    url = "https://github.com/j-hui/fidget.nvim"
+  },
   ["gitsigns.nvim"] = {
     loaded = true,
     path = "/home/leonam/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
@@ -159,20 +165,41 @@ _G.packer_plugins = {
     path = "/home/leonam/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
     url = "https://github.com/onsails/lspkind-nvim"
   },
-  ["lua-dev.nvim"] = {
-    loaded = true,
-    path = "/home/leonam/.local/share/nvim/site/pack/packer/start/lua-dev.nvim",
-    url = "https://github.com/folke/lua-dev.nvim"
-  },
   ["lualine.nvim"] = {
     loaded = true,
     path = "/home/leonam/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
+  ["mason-lspconfig.nvim"] = {
+    loaded = true,
+    path = "/home/leonam/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
+    url = "https://github.com/williamboman/mason-lspconfig.nvim"
+  },
+  ["mason.nvim"] = {
+    loaded = true,
+    path = "/home/leonam/.local/share/nvim/site/pack/packer/start/mason.nvim",
+    url = "https://github.com/williamboman/mason.nvim"
+  },
   ["neo-tree.nvim"] = {
     loaded = true,
     path = "/home/leonam/.local/share/nvim/site/pack/packer/start/neo-tree.nvim",
     url = "https://github.com/nvim-neo-tree/neo-tree.nvim"
+  },
+  ["neodev.nvim"] = {
+    loaded = true,
+    path = "/home/leonam/.local/share/nvim/site/pack/packer/start/neodev.nvim",
+    url = "https://github.com/folke/neodev.nvim"
+  },
+  neogit = {
+    config = { "\27LJ\2\nŠ\1\0\0\a\0\n\0\0156\0\0\0'\2\1\0B\0\2\0029\1\2\0004\3\0\0B\1\2\0016\1\3\0009\1\4\0019\1\5\1'\3\6\0'\4\a\0009\5\b\0005\6\t\0B\1\5\1K\0\1\0\1\0\1\tdesc\14Neo [g]it\topen\14<leader>g\6n\bset\vkeymap\bvim\nsetup\vneogit\frequire\0" },
+    loaded = true,
+    path = "/home/leonam/.local/share/nvim/site/pack/packer/start/neogit",
+    url = "https://github.com/NeogitOrg/neogit"
+  },
+  ["neoscroll.nvim"] = {
+    loaded = true,
+    path = "/home/leonam/.local/share/nvim/site/pack/packer/start/neoscroll.nvim",
+    url = "https://github.com/karb94/neoscroll.nvim"
   },
   ["nui.nvim"] = {
     loaded = true,
@@ -185,7 +212,6 @@ _G.packer_plugins = {
     url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
   },
   ["nvim-bufferline.lua"] = {
-    config = { 'require("bufferline").setup {}' },
     loaded = true,
     path = "/home/leonam/.local/share/nvim/site/pack/packer/start/nvim-bufferline.lua",
     url = "https://github.com/akinsho/nvim-bufferline.lua"
@@ -208,11 +234,6 @@ _G.packer_plugins = {
     path = "/home/leonam/.local/share/nvim/site/pack/packer/opt/nvim-lastplace",
     url = "https://github.com/ethanholz/nvim-lastplace"
   },
-  ["nvim-lsp-installer"] = {
-    loaded = true,
-    path = "/home/leonam/.local/share/nvim/site/pack/packer/start/nvim-lsp-installer",
-    url = "https://github.com/williamboman/nvim-lsp-installer"
-  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/home/leonam/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
@@ -223,6 +244,11 @@ _G.packer_plugins = {
     path = "/home/leonam/.local/share/nvim/site/pack/packer/start/nvim-notify",
     url = "https://github.com/rcarriga/nvim-notify"
   },
+  ["nvim-spectre"] = {
+    loaded = true,
+    path = "/home/leonam/.local/share/nvim/site/pack/packer/start/nvim-spectre",
+    url = "https://github.com/nvim-pack/nvim-spectre"
+  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/home/leonam/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
@@ -231,7 +257,7 @@ _G.packer_plugins = {
   ["nvim-treesitter-context"] = {
     loaded = true,
     path = "/home/leonam/.local/share/nvim/site/pack/packer/start/nvim-treesitter-context",
-    url = "https://github.com/romgrk/nvim-treesitter-context"
+    url = "https://github.com/nvim-treesitter/nvim-treesitter-context"
   },
   ["nvim-treesitter-refactor"] = {
     loaded = true,
@@ -257,11 +283,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/leonam/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
-  },
-  playground = {
-    loaded = true,
-    path = "/home/leonam/.local/share/nvim/site/pack/packer/start/playground",
-    url = "https://github.com/nvim-treesitter/playground"
   },
   ["plenary.nvim"] = {
     loaded = true,
@@ -293,13 +314,23 @@ _G.packer_plugins = {
     path = "/home/leonam/.local/share/nvim/site/pack/packer/start/telescope-project.nvim",
     url = "https://github.com/nvim-telescope/telescope-project.nvim"
   },
+  ["telescope-ui-select.nvim"] = {
+    loaded = true,
+    path = "/home/leonam/.local/share/nvim/site/pack/packer/start/telescope-ui-select.nvim",
+    url = "https://github.com/nvim-telescope/telescope-ui-select.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/leonam/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
+  ["tree-sitter-query"] = {
+    loaded = true,
+    path = "/home/leonam/.local/share/nvim/site/pack/packer/start/tree-sitter-query",
+    url = "https://github.com/nvim-treesitter/tree-sitter-query"
+  },
   ["trouble.nvim"] = {
-    config = { "\27LJ\2\n²\1\0\0\6\0\n\0\0156\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\0016\0\3\0009\0\4\0009\0\5\0'\2\6\0'\3\a\0'\4\b\0005\5\t\0B\0\5\1K\0\1\0\1\0\2\vsilent\2\fnoremap\2*<Cmd>Trouble document_diagnostics<CR>\t<F6>\6n\20nvim_set_keymap\bapi\bvim\nsetup\ftrouble\frequire\0" },
+    config = { "\27LJ\2\n²\1\0\0\6\0\n\0\0156\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\0016\0\3\0009\0\4\0009\0\5\0'\2\6\0'\3\a\0'\4\b\0005\5\t\0B\0\5\1K\0\1\0\1\0\2\vsilent\2\fnoremap\2*<Cmd>Trouble document_diagnostics<CR>\t<F5>\6n\20nvim_set_keymap\bapi\bvim\nsetup\ftrouble\frequire\0" },
     loaded = true,
     path = "/home/leonam/.local/share/nvim/site/pack/packer/start/trouble.nvim",
     url = "https://github.com/folke/trouble.nvim"
@@ -313,11 +344,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/leonam/.local/share/nvim/site/pack/packer/start/vim-commentary",
     url = "https://github.com/tpope/vim-commentary"
-  },
-  ["vim-sleuth"] = {
-    loaded = true,
-    path = "/home/leonam/.local/share/nvim/site/pack/packer/start/vim-sleuth",
-    url = "https://github.com/tpope/vim-sleuth"
   },
   ["vim-startify"] = {
     loaded = true,
@@ -338,23 +364,22 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/leonam/.local/share/nvim/site/pack/packer/start/wilder.nvim",
     url = "https://github.com/gelguy/wilder.nvim"
-  },
-  ["zone.nvim"] = {
-    loaded = true,
-    path = "/home/leonam/.local/share/nvim/site/pack/packer/start/zone.nvim",
-    url = "https://github.com/tamton-aquib/zone.nvim"
   }
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: deadcolumn.nvim
+time([[Config for deadcolumn.nvim]], true)
+try_loadstring("\27LJ\2\n<\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\15deadcolumn\frequire\0", "config", "deadcolumn.nvim")
+time([[Config for deadcolumn.nvim]], false)
+-- Config for: neogit
+time([[Config for neogit]], true)
+try_loadstring("\27LJ\2\nŠ\1\0\0\a\0\n\0\0156\0\0\0'\2\1\0B\0\2\0029\1\2\0004\3\0\0B\1\2\0016\1\3\0009\1\4\0019\1\5\1'\3\6\0'\4\a\0009\5\b\0005\6\t\0B\1\5\1K\0\1\0\1\0\1\tdesc\14Neo [g]it\topen\14<leader>g\6n\bset\vkeymap\bvim\nsetup\vneogit\frequire\0", "config", "neogit")
+time([[Config for neogit]], false)
 -- Config for: trouble.nvim
 time([[Config for trouble.nvim]], true)
-try_loadstring("\27LJ\2\n²\1\0\0\6\0\n\0\0156\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\0016\0\3\0009\0\4\0009\0\5\0'\2\6\0'\3\a\0'\4\b\0005\5\t\0B\0\5\1K\0\1\0\1\0\2\vsilent\2\fnoremap\2*<Cmd>Trouble document_diagnostics<CR>\t<F6>\6n\20nvim_set_keymap\bapi\bvim\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")
+try_loadstring("\27LJ\2\n²\1\0\0\6\0\n\0\0156\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\0016\0\3\0009\0\4\0009\0\5\0'\2\6\0'\3\a\0'\4\b\0005\5\t\0B\0\5\1K\0\1\0\1\0\2\vsilent\2\fnoremap\2*<Cmd>Trouble document_diagnostics<CR>\t<F5>\6n\20nvim_set_keymap\bapi\bvim\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")
 time([[Config for trouble.nvim]], false)
--- Config for: nvim-bufferline.lua
-time([[Config for nvim-bufferline.lua]], true)
-require("bufferline").setup {}
-time([[Config for nvim-bufferline.lua]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads

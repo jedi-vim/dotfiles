@@ -3,7 +3,7 @@ local M = {}
 
 M.setup = function()
   local required_servers = {
-    "sumneko_lua", -- lua
+    -- "sumneko_lua", -- lua
     "pyright",     -- python
     "gopls",       -- golang
     "tsserver",    -- js, jsx, tsx
@@ -14,10 +14,21 @@ M.setup = function()
     "sqlls",       -- sql
   }
 
-  local lspconfig = require("lspconfig")
+  local ok, lspconfig = pcall("require", "lspconfig")
+  if not ok then
+    return
+  end
 
-  require("mason").setup {}
-  local mason_lspconfig = require("mason-lspconfig")
+  local mason_ok, mason = pcall("require", "mason")
+  if not mason_ok then
+    return
+  end
+  mason.setup {}
+  
+  local mlsp_ok, mason_lspconfig = pcall("require", "mason-lspconfig")
+  if not mlsp_ok then
+    return
+  end
 
   mason_lspconfig.setup {
     ensure_installed = required_servers

@@ -1,7 +1,14 @@
 local M = {}
 
-local nls = require "null-ls"
-local nls_utils = require "null-ls.utils"
+local ok_nls, nls = pcall("require", "null-ls")
+if not ok_nls then
+  return
+end
+
+local ok_nls_utils, nls_utils = pcall("require", "null-ls.utils")
+if not ok_nls_utils then
+  return
+end
 
 local formatting = nls.builtins.formatting
 local diagnostics = nls.builtins.diagnostics
