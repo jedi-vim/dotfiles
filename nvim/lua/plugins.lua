@@ -103,15 +103,16 @@ return require("packer").startup { function(use)
     requires = { 'nvim-lua/plenary.nvim' },
   }
   -- Sintax hihjlight based on language
+  use {"nvim-treesitter/nvim-treesitter-textobjects", commit="249d90a"}
+  use {"nvim-treesitter/nvim-treesitter-context", tag="compat/0.7"}
   use {
     'nvim-treesitter/nvim-treesitter',
+    tag="v0.8.0",
     run = ':TSUpdate',
     requires = {
+      "nvim-treesitter/tree-sitter-query",
       "nvim-treesitter/nvim-treesitter-refactor",
-      "romgrk/nvim-treesitter-context",
       "p00f/nvim-ts-rainbow",
-      "nvim-treesitter/playground",
-      "nvim-treesitter/nvim-treesitter-textobjects"
     }
   }
 
