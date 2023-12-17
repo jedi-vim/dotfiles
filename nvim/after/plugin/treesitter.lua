@@ -85,4 +85,16 @@ require'treesitter-context'.setup{
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr"
 
-vim.keymap.set("n", "<leader>pg", "[[<cmd>TSPlaygroundToggle<cr>]]")
+local api = vim.api
+local opt = vim.o
+api.nvim_create_autocmd({'BufEnter', "BufAdd", "BufNew", "BufNewFile", "BufWinEnter"},
+    {
+        group = api.nvim_create_augroup("TS_FOLD_WORKAROUND", {}),
+        callback= function ()
+            opt.foldmethod = "expr"
+            opt.foldexpr = "nvim_treesitter#foldexpr()"
+        end
+    }
+)
+
+--vim.keymap.set("n", "<leader>pg", "[[<cmd>TSPlaygroundToggle<cr>]]")
