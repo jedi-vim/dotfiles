@@ -3,7 +3,7 @@ local M = {}
 
 M.setup = function()
   local required_servers = {
-    -- "sumneko_lua", -- lua
+    "lua_ls",      -- lua
     "pyright",     -- python
     "gopls",       -- golang
     "tsserver",    -- js, jsx, tsx
