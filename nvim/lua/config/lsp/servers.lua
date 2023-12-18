@@ -12,23 +12,9 @@ M.setup = function()
     "jsonls",      -- json
     "sqlls",       -- sql
   }
-
-  local ok, lspconfig = pcall("require", "lspconfig")
-  if not ok then
-    return
-  end
-
-  local mason_ok, mason = pcall("require", "mason")
-  if not mason_ok then
-    return
-  end
-  mason.setup {}
-  
-  local mlsp_ok, mason_lspconfig = pcall("require", "mason-lspconfig")
-  if not mlsp_ok then
-    return
-  end
-
+  require("mason").setup {}
+  local lspconfig = require("lspconfig")
+  local mason_lspconfig = require("mason-lspconfig")
   mason_lspconfig.setup {
     ensure_installed = required_servers
   }
