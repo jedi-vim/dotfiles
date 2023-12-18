@@ -43,7 +43,7 @@ local function format_message(message, percentage)
 end
 
 M = {}
----@diagnostic disable-next-line: unused-function, unused-local
+
 M.setup = function()
 
     vim.lsp.handlers["$/progress"] = function(_, result, ctx)
