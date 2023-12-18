@@ -12,9 +12,10 @@ vim.fn.sign_define("DiagnosticSignHint", {text = "", texthl = "DiagnosticSign
 
 --Mappging
 local set_kmap = vim.keymap.set
-set_kmap( "n", "<F9>", ":Neotree source=filesystem position=left<CR>")
-set_kmap( "n", "<F8>", ":Neotree source=git_status position=left<CR>")
-set_kmap( "n", "<F7>", ":Neotree source=buffers position=left<CR>")
+set_kmap( "n", "<F9>", ":Neotree source=filesystem       position=left<CR>")
+set_kmap( "n", "<F8>", ":Neotree source=git_status       position=left<CR>")
+set_kmap( "n", "<F7>", ":Neotree source=buffers          position=left<CR>")
+-- set_kmap( "n", "<F6>", ":Neotree source=document_symbols position=left<CR>")
 
 neo_tree.setup({
     close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
@@ -53,10 +54,10 @@ neo_tree.setup({
       git_status = {
         symbols = {
           -- Change type
-          added     = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
-          modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
-          deleted   = "✖",-- this can only be used in the git_status source
-          renamed   = "",-- this can only be used in the git_status source
+          added     = "✚", -- or "✚", but this is redundant info if you use git_status_colors on the name
+          modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
+          deleted   = "✖", -- this can only be used in the git_status source
+          renamed   = "", -- this can only be used in the git_status source
           -- Status type
           untracked = "",
           ignored   = "",
@@ -89,6 +90,10 @@ neo_tree.setup({
       }
     },
     nesting_rules = {},
+    document_symbols = {
+        follow_cursor = True,
+        client_filters = "first"
+    },
     filesystem = {
       filtered_items = {
         visible = false, -- when true, they will just be displayed differently than normal items
@@ -104,8 +109,7 @@ neo_tree.setup({
           --"thumbs.db"
         },
       },
-      follow_current_file = true, -- This will find and focus the file in the active buffer every
-                                   -- time the current file is changed while the tree is open.
+      follow_current_file = { enbaled = true},
       hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
                                               -- in whatever position is specified in window.position
                             -- "open_current",  -- netrw disabled, opening a directory opens within the
