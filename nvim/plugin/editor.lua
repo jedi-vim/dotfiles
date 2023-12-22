@@ -21,7 +21,10 @@ opt.expandtab = true
 opt.shiftwidth = 4
 opt.softtabstop = 4
 opt.foldlevel=5
---
+
+local autocmd = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup
+
 -- Manter CWD com o arquivo aberto
 vim.cmd [[
 autocmd BufEnter * silent! :lcd%:p:h
@@ -56,9 +59,9 @@ augroup END
 ]]
 
 -- Highlight on yank
- vim.cmd [[
-   augroup YankHighlight
-       autocmd!
-           autocmd TextYankPost * silent! lua vim.highlight.on_yank()
-             augroup end
- ]]
+autocmd("TextYankPost", {
+  desc = "Highlight yanked text",
+  group = augroup("highlightyank", { clear = true }),
+  pattern = "*",
+  callback = function() vim.highlight.on_yank() end,
+})
