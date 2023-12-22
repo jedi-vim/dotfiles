@@ -33,6 +33,8 @@ keymap("n", "<Tab>", "<C-W>w")
 keymap("n", "<C-l>", ":bn<CR>")
 keymap("n", "<C-a>", ":bp<CR>")
 keymap("n", "<leader>q", ":bd<CR>", {silent = true})
+keymap("n", "<C-m>l", function() require("utils").move_buf(vim.v.count > 0 and vim.v.count or 1) end)
+keymap("n", "<C-m>a", function() require("utils").move_buf(-(vim.v.count > 0 and vim.v.count or 1)) end)
 
 -- Resize da janelas
 -- Vertical
