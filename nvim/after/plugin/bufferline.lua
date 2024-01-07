@@ -12,3 +12,6 @@ bufferline.setup({
     color_icons = true
   },
 })
+
+vim.keymap.set("n", "<Leader>L", "[[<Cmd>BufferLineMoveNext<CR>]]", {desc="Mover buffer para direita"})
+vim.keymap.set("n", "<Leader>A", "[[<Cmd>BufferLineMovePrev<CR>]]", {desc="Mover buffer para esquerda"})
