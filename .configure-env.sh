@@ -19,3 +19,11 @@ NEOVIM_VERSION="0.8.1"
 curl -LO https://github.com/neovim/neovim/releases/download/v$NEOVIM_VERSION/nvim.appimage
 mkdir -p $HOME/.local/bin/ && mv nvim.appimage $HOME/.local/bin/nvim && chmod u+x $HOME/.local/bin/nvim
 ln -s $HOME/.local/bin/nvim $HOME/.local/bin/nvim-$NEOVIM_VERSION
+
+echo "\n\n########### Git ################"
+git config --global alias.ck checkout
+git config --global alias.br branch
+git config --global alias.co commit
+git config --global alias.st status
+git config --global alias.pu pull
+git config --global alias.ps push
