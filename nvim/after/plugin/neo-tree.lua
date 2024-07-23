@@ -5,17 +5,17 @@ end
 
 vim.g.neo_tree_remove_legacy_commands = 1
 
-vim.fn.sign_define("DiagnosticSignError", {text = " ", texthl = "DiagnosticSignError"})
-vim.fn.sign_define("DiagnosticSignWarn", {text = " ", texthl = "DiagnosticSignWarn"})
+vim.fn.sign_define("DiagnosticSignError", {text = "", texthl = "DiagnosticSignError"})
+vim.fn.sign_define("DiagnosticSignWarn", {text = "", texthl = "DiagnosticSignWarn"})
 vim.fn.sign_define("DiagnosticSignInfo", {text = " ", texthl = "DiagnosticSignInfo"})
-vim.fn.sign_define("DiagnosticSignHint", {text = "", texthl = "DiagnosticSignHint"})
+vim.fn.sign_define("DiagnosticSignHint", {text = "󰌵", texthl = "DiagnosticSignHint"})
 
 --Mappging
 local set_kmap = vim.keymap.set
 set_kmap( "n", "<F9>", ":Neotree source=filesystem       position=left<CR>")
 set_kmap( "n", "<F8>", ":Neotree source=git_status       position=left<CR>")
 set_kmap( "n", "<F7>", ":Neotree source=buffers          position=left<CR>")
--- set_kmap( "n", "<F6>", ":Neotree source=document_symbols position=left<CR>")
+set_kmap( "n", "<F4>", ":Neotree source=document_symbols position=left<CR>")
 
 neo_tree.setup({
     close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab

@@ -1,5 +1,5 @@
 -- Configurações gerais
-local opt = vim.o
+local opt = vim.opt
 opt.number = true
 opt.autoindent = true
 opt.incsearch = true
@@ -15,6 +15,8 @@ opt.hidden = true
 opt.splitbelow = true
 opt.splitright = true
 opt.termguicolors = true
+-- opt.clipboard:append("unnamedplus")
+opt.showmatch = true
 
 -- Indentation default
 opt.expandtab = true
@@ -22,4 +24,4 @@ opt.shiftwidth = 4
 opt.softtabstop = 4
 opt.foldlevel=5
 
-vim.opt.signcolumn = "yes"
+opt.signcolumn = "yes"

@@ -1,4 +1,4 @@
-local opt = vim.opt_local
+local opt = vim.opt
 opt.autoindent = true
 opt.cindent = true
 opt.cinwords = "if,elif,else,for,while,try,except,finally,def,class,with"
