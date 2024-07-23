@@ -33,7 +33,7 @@ plugins=(
 # pyenv
 export PATH="/home/leonam/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
-# eval "$(pyenv virtualenv-init -)"
+eval "$(pyenv virtualenv-init -)"
 
 # Python Local
 export PATH="$HOME/.poetry/bin/:$HOME/.local/bin/:$PATH"
