@@ -107,7 +107,7 @@ return require("packer").startup { function(use)
     tag="v0.8.0",
     run = ':TSUpdate',
     requires = {
-      "nvim-treesitter/tree-sitter-query",
+      -- "nvim-treesitter/tree-sitter-query",
       "nvim-treesitter/nvim-treesitter-refactor",
       "p00f/nvim-ts-rainbow",
     }
