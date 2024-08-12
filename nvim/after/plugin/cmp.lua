@@ -14,6 +14,7 @@ cmp.setup({
     end,
   },
   sources = {
+    { name = 'nvim_lsp_signature_help' },
     { name = "luasnip" },
     { name = "treesitter" },
     { name = "nvim_lsp" },
