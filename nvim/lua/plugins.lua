@@ -40,18 +40,10 @@ return require("packer").startup { function(use)
 
   --Themes
   use { 'ellisonleao/gruvbox.nvim' , tag="1.0.0" }
-  -- use({ "catppuccin/nvim", as = "catppuccin" })
-  -- use 'shaunsingh/nord.nvim'
-  -- use {
-  --   'projekt0n/github-nvim-theme',
-  --   config = function()
-  --       require("github-theme").setup({theme_style = "light_colorblind"})
-  --   end
-  -- }
 
   -- Add indentation guides even on blank lines
   use { 
-    "lukas-reineke/indent-blankline.nvim", 
+    "lukas-reineke/indent-blankline.nvim",
     tag="v2.20.0"
   }
   -- Friendly start screen
@@ -91,11 +83,9 @@ return require("packer").startup { function(use)
   use {
     "akinsho/nvim-bufferline.lua",
   }
-  -- a smooth scrolling neovim plugin written in lua
-  use 'karb94/neoscroll.nvim'
   -- Add git related info in the signs columns and popups
   use {
-    'lewis6991/gitsigns.nvim', 
+    'lewis6991/gitsigns.nvim',
     tag="v0.6",
     requires = { 'nvim-lua/plenary.nvim' },
   }
@@ -107,7 +97,6 @@ return require("packer").startup { function(use)
     tag="v0.8.0",
     run = ':TSUpdate',
     requires = {
-      -- "nvim-treesitter/tree-sitter-query",
       "nvim-treesitter/nvim-treesitter-refactor",
       "p00f/nvim-ts-rainbow",
     }
@@ -143,6 +132,7 @@ return require("packer").startup { function(use)
       "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
+      "hrsh7th/cmp-nvim-lsp-signature-help",
       "quangnguyen30192/cmp-nvim-tags",
       "ray-x/cmp-treesitter",
       "onsails/lspkind-nvim",
@@ -159,15 +149,6 @@ return require("packer").startup { function(use)
     }
   }
 
-  -- A pretty list for showing diagnostics, references etc.
-  use {
-    "folke/trouble.nvim",
-    config = function()
-      require("trouble").setup({})
-      vim.api.nvim_set_keymap("n", "<F5>", "<Cmd>Trouble document_diagnostics<CR>", { silent = true, noremap = true })
-    end,
-  }
-
   -- A blazing fast and easy to configure neovim statusline plugin
   use {
     'nvim-lualine/lualine.nvim',
@@ -182,18 +163,6 @@ return require("packer").startup { function(use)
     'Bekaboo/deadcolumn.nvim',
     config = function()
       require("deadcolumn").setup {}
-    end
-  }
-
-  -- NeoGit
-  use {
-    'NeogitOrg/neogit',
-    commit="089d388876a535032ac6a3f80e19420f09e4ddda",
-    requires = 'nvim-lua/plenary.nvim',
-    config= function()
-      local neogit = require("neogit")
-      neogit.setup{}
-      vim.keymap.set("n", "<leader>g", neogit.open, {desc="Neo [g]it"})
     end
   }
 
