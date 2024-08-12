@@ -22,7 +22,6 @@ M.setup = function()
     function(server_name)
       local lsp_local_config = require("config.lsp.handlers")
       local config = {
-        on_attach = lsp_local_config.on_attach,
         capabilities = lsp_local_config.capabilities,
         handlers = lsp_local_config.handlers
       }
