@@ -25,3 +25,5 @@ opt.softtabstop = 4
 opt.foldlevel=5
 
 opt.signcolumn = "yes"
+opt.list = true
+opt.listchars:append({ eol = '↴', space= '␣', trail= '-' })

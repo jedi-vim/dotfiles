@@ -6,7 +6,7 @@ symbols_outline.setup({
   highlight_hovered_item = true,
   show_guides = true,
   auto_preview = false, -- experimental
-  position = 'left',
+  position = 'right',
   autoclose = true,
   keymaps = {
     close = "<Esc>",
