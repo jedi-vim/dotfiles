@@ -1,22 +1,27 @@
 local M = {}
 
 M.setup = function()
-  local required_servers = {
-    "lua_ls",      -- lua
-    "pyright",     -- python
-    "gopls",       -- golang
-    "tsserver",    -- js, jsx, tsx
-    "bashls",      -- bash
-    "yamlls",      -- yaml
-    "vimls",       -- vim
-    "jsonls",      -- json
-    "sqlls",       -- sql
-  }
   require("mason").setup {}
-  local mason_lspconfig = require("mason-lspconfig")
-  mason_lspconfig.setup {
-    ensure_installed = required_servers
+  require("mason-lspconfig").setup {
+    ensure_installed = {
+      "lua_ls",      -- lua
+      "pyright",     -- python
+      "gopls",       -- golang
+      "tsserver",    -- js, jsx, tsx
+      "bashls",      -- bash
+      "yamlls",      -- yaml
+      "vimls",       -- vim
+      "jsonls",      -- json
+      "sqlls",       -- sql
+    }
   }
+  require("mason-lspconfig").setup_handlers({
+    function(server_name)
+      if server_name then
+        require("lspconfig")[server_name].setup({})
+      end
+    end
+  })
 end
 
 return M
