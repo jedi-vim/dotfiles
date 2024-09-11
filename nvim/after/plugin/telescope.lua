@@ -26,6 +26,8 @@ local mappings = {
   { "n", "<Leader>b", ":lua require'telescope.builtin'.buffers{}<CR>", opts },
   -- Git Files
   { "n", "<Leader>f", [[<Cmd>Telescope git_files<CR>]], opts },
+  -- Project Files
+  { "n", "<leader>g", require('telescope.builtin').live_grep, opts },
   -- Old Files
   { "n", "<Leader>h", [[<Cmd>Telescope oldfiles<CR>]], opts },
   -- Jumped List
