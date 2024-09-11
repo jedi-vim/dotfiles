@@ -34,6 +34,16 @@ M.setup = function()
         end,
         group = diagnostic,
       })
+      vim.diagnostic.config({
+        virtual_text = false,
+        underline = true,
+        float = {
+          source = "always",
+        },
+        severity_sort = true,
+        signs = true,
+        update_in_insert = false,
+      })
 
       -- Signs
       local signs = { Error = "", Warn = "", Hint = "", Info = "" }
@@ -78,7 +88,8 @@ M.setup = function()
       custom_handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics,
         { virtual_text = false })
       custom_handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
-      custom_handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
+      custom_handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help,
+        { border = "rounded" })
       -- Merge custom handler on defaults
       vim.tbl_extend("force", client.handlers, custom_handlers)
 
