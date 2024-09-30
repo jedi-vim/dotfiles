@@ -30,9 +30,26 @@ keymap("v", "K", ":m '<-2<CR>gv=gv")
 keymap("n", "<Tab>", "<C-W>w")
 
 -- Navegação entre buffers
+function close_buffer()
+  local current_buf = vim.api.nvim_get_current_buf() -- Obtém o buffer atual
+  local buffers = vim.fn.getbufinfo({ buflisted = 1 }) -- Lista de buffers abertos
+  
+  if #buffers > 1 then
+    -- Se houver mais de um buffer aberto, alterna para o próximo
+    for _, buf in ipairs(buffers) do
+      if buf.bufnr ~= current_buf then
+        vim.api.nvim_set_current_buf(buf.bufnr) -- Alterna para o próximo buffer
+        break
+      end
+    end
+  end
+  
+  -- Deleta o buffer atual sem usar vim.cmd
+  vim.api.nvim_buf_delete(current_buf, { force = true })
+end
 keymap("n", "<C-l>", ":bn<CR>")
 keymap("n", "<C-a>", ":bp<CR>")
-keymap("n", "<leader>q", ":bd<CR>", {silent = true})
+keymap("n", "<leader>q", close_buffer, {silent = true})
 
 -- Resize da janelas
 -- Vertical
