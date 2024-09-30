@@ -106,7 +106,7 @@ return require("packer").startup { function(use)
   use "folke/twilight.nvim"
 
   -- Docs and completion for the nvim lua API.
-  use "folke/neodev.nvim"
+  use {"folke/neodev.nvim", tag="v3.0.0"}
 
   -- Quickstart configurations for the Nvim LSP client
   use {
