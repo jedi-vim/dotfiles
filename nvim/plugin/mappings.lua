@@ -27,29 +27,56 @@ keymap("v", "J", ":m '>+1<CR>gv=gv")
 keymap("v", "K", ":m '<-2<CR>gv=gv")
 
 -- Mudar para proxima janela
-keymap("n", "<Tab>", "<C-W>w")
+function SwitchWindow()
+  local current_win = vim.api.nvim_get_current_win()
 
--- Navegação entre buffers
-function close_buffer()
-  local current_buf = vim.api.nvim_get_current_buf() -- Obtém o buffer atual
-  local buffers = vim.fn.getbufinfo({ buflisted = 1 }) -- Lista de buffers abertos
+  -- Tenta alternar para a próxima janela, ignorando notificações
+  vim.cmd("wincmd w")
   
-  if #buffers > 1 then
-    -- Se houver mais de um buffer aberto, alterna para o próximo
-    for _, buf in ipairs(buffers) do
-      if buf.bufnr ~= current_buf then
-        vim.api.nvim_set_current_buf(buf.bufnr) -- Alterna para o próximo buffer
-        break
-      end
+  -- Verifica se a janela é uma notificação ou pop-up
+  while vim.fn.win_gettype() == "popup" or vim.fn.win_gettype() == "notification" do
+    -- Se for uma janela de notificação, pula para a próxima
+    vim.cmd("wincmd w")
+    
+    -- Se voltar à janela original, interrompe o loop
+    if vim.api.nvim_get_current_win() == current_win then
+      break
     end
   end
-  
-  -- Deleta o buffer atual sem usar vim.cmd
-  vim.api.nvim_buf_delete(current_buf, { force = true })
 end
+
+keymap("n", "<Tab>", SwitchWindow, { silent = true, noremap = true })
+
+-- Navegação entre buffers
+function CloseBuffer()
+  -- Obtém o buffer atual e a lista de buffers abertos
+  local current_buf = vim.api.nvim_get_current_buf()
+  local buffers = vim.fn.getbufinfo({ buflisted = 1 })
+
+  -- Identifica a posição do buffer atual na lista de buffers
+  local current_buf_index = nil
+  for i, buf in ipairs(buffers) do
+    if buf.bufnr == current_buf then
+      current_buf_index = i
+      break
+    end
+  end
+
+  -- Fecha o buffer atual
+  vim.api.nvim_buf_delete(current_buf, { force = true })
+
+  -- Verifica se existe um buffer à direita, e foca nele
+  if current_buf_index < #buffers then
+    vim.api.nvim_set_current_buf(buffers[current_buf_index + 1].bufnr)
+  -- Se não houver, foca no buffer à esquerda
+  elseif current_buf_index > 1 then
+    vim.api.nvim_set_current_buf(buffers[current_buf_index - 1].bufnr)
+  end
+end
+
 keymap("n", "<C-l>", ":bn<CR>")
 keymap("n", "<C-a>", ":bp<CR>")
-keymap("n", "<leader>q", close_buffer, {silent = true})
+keymap("n", "<leader>q", CloseBuffer, {silent = true})
 
 -- Resize da janelas
 -- Vertical
