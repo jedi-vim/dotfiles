@@ -8,7 +8,26 @@ local actions = require("telescope.actions")
 telescope.setup(
   {
     defaults = {
-      mappings = { i = { ["<Esc>"] = actions.close } }
+      mappings = { i = { ["<Esc>"] = actions.close } },
+      layout_strategy = 'vertical',  -- Usa o layout horizontal
+      layout_config = {
+        horizontal = {
+          preview_width = 0.6,         -- Define a largura da prévia (60% da tela)
+          prompt_position = 'top',     -- Posiciona o prompt no topo
+        },
+      },
+      sorting_strategy = 'ascending',  -- Ordena os resultados em ordem ascendente
+      -- path_display = { 'shorten' },    -- Exibe o path de forma abreviada
+    },
+    pickers = {
+      lsp_references = {
+        show_line = false,             -- Oculta a linha de referência no painel esquerdo
+        layout_config = {
+          horizontal = {
+            preview_width = 0.5,       -- Sobrescreve a largura da prévia para LSP references
+          },
+        },
+      },
     },
     project = {
       base_dirs = {
