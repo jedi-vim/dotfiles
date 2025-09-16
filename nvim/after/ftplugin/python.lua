@@ -5,10 +5,13 @@ opt.cinwords = "if,elif,else,for,while,try,except,finally,def,class,with,match,c
 opt.colorcolumn = "80"
 opt.copyindent = true
 opt.expandtab = true
-opt.formatoptions = "jntcoql"
+opt.formatoptions = "jntcoqlr" -- Inclui "r" para comentários
 opt.shiftwidth = 4
 opt.softtabstop = 4
 opt.tabstop = 8
+opt.smartindent = true -- Melhora a indentação automática
+opt.breakindent = true -- Mantém a indentação em quebras de linha
+opt.textwidth = 79 -- Segue o padrão PEP 8
 
 -- vim.api.nvim_create_autocmd("InsertCharPre", {
 --   pattern = { "*.py" },
