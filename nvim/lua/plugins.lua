@@ -39,12 +39,11 @@ return require("packer").startup { function(use)
   })
 
   --Themes
-  use { 'ellisonleao/gruvbox.nvim' , tag="1.0.0" }
+  use { 'ellisonleao/gruvbox.nvim'}
 
   -- Add indentation guides even on blank lines
   use { 
     "lukas-reineke/indent-blankline.nvim",
-    tag="v2.20.0"
   }
   -- Friendly start screen
   use 'mhinz/vim-startify'
@@ -52,10 +51,8 @@ return require("packer").startup { function(use)
   -- UI to select things (files, grep results, open buffers...)
   use {
     "nvim-telescope/telescope.nvim",
-    tag="0.1.1",
     requires = {
       "nvim-lua/plenary.nvim",
-      "nvim-lua/popup.nvim",
       "nvim-telescope/telescope-project.nvim",
       "nvim-telescope/telescope-file-browser.nvim",
       "nvim-telescope/telescope-ui-select.nvim"
@@ -86,19 +83,15 @@ return require("packer").startup { function(use)
   -- Add git related info in the signs columns and popups
   use {
     'lewis6991/gitsigns.nvim',
-    tag="v0.6",
     requires = { 'nvim-lua/plenary.nvim' },
   }
   -- Sintax hihjlight based on language
-  use {"nvim-treesitter/nvim-treesitter-textobjects", commit="249d90a"}
-  use {"nvim-treesitter/nvim-treesitter-context", tag="compat/0.7"}
   use {
     'nvim-treesitter/nvim-treesitter',
-    tag="v0.8.0",
+    tag="v0.10.0",
     run = ':TSUpdate',
     requires = {
-      "nvim-treesitter/nvim-treesitter-refactor",
-      "p00f/nvim-ts-rainbow",
+      "nvim-treesitter/nvim-treesitter-context"
     }
   }
 
@@ -106,7 +99,7 @@ return require("packer").startup { function(use)
   use "folke/twilight.nvim"
 
   -- Docs and completion for the nvim lua API.
-  use {"folke/neodev.nvim", tag="v3.0.0"}
+  use {"folke/neodev.nvim"}
 
   -- Quickstart configurations for the Nvim LSP client
   use {
@@ -115,7 +108,7 @@ return require("packer").startup { function(use)
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       "ray-x/lsp_signature.nvim",
-      { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+      { 'j-hui/fidget.nvim', opts = {} },
 
     }
   }
@@ -150,8 +143,7 @@ return require("packer").startup { function(use)
   use {
     'nvim-lualine/lualine.nvim',
     requires = {
-      { 'kyazdani42/nvim-web-devicons', opt = true },
-      { 'nvim-lua/lsp-status.nvim' },
+      { 'kyazdani42/nvim-web-devicons', opt = true }
     },
   }
 
