@@ -119,6 +119,12 @@ return require("packer").startup { function(use)
 
     }
   }
+  
+  -- Simple winbar/statusline plugin that shows your current code context 
+  use {
+    "SmiteshP/nvim-navic",
+    requires = "neovim/nvim-lspconfig"
+  }
 
   -- Snippets engine
   use "L3MON4D3/LuaSnip"
@@ -137,15 +143,6 @@ return require("packer").startup { function(use)
       "ray-x/cmp-treesitter",
       "onsails/lspkind-nvim",
       "saadparwaiz1/cmp_luasnip",
-    }
-  }
-
-  -- lsp, completion, linting and snippets
-  use {
-    "jose-elias-alvarez/null-ls.nvim",
-    requires = {
-      "SmiteshP/nvim-gps",
-      "ThePrimeagen/refactoring.nvim",
     }
   }
 

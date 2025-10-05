@@ -3,8 +3,6 @@ if not ok then
     return
 end
 
-local gps = require "nvim-gps"
-
 local function separator()
   return "%="
 end
@@ -70,7 +68,7 @@ lualine.setup {
         lualine_c = {
             { separator },
             { lsp_client, icon = " "},
-            { gps.get_location, cond = gps.is_available },
+            { require('nvim-navic').get_location, cond = require('nvim-navic').is_available },
         },
         lualine_x = { "filename", "encoding", "fileformat", "filetype" },
         lualine_y = { "progress" },

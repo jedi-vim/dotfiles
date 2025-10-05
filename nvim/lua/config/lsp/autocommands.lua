@@ -70,6 +70,10 @@ M.setup = function()
           end
         })
       end
+      
+    if client.server_capabilities.documentSymbolProvider then
+      require('nvim-navic').attach(client, event.buf)
+    end
 
       -- Capabilities
       local capabilities = vim.lsp.protocol.make_client_capabilities()
