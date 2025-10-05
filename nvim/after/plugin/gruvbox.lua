@@ -8,7 +8,12 @@ gruvbox.setup({
   undercurl = true,
   underline = true,
   bold = true,
-  italic = true,
+  italics = {
+      strings = true,
+      comments = true,
+      operators = false,
+      folds = true,
+  },
   strikethrough = true,
   invert_selection = false,
   invert_signs = false,
@@ -18,5 +23,5 @@ gruvbox.setup({
   contrast = "", -- can be "hard", "soft" or empty string
   overrides = {},
 })
-vim.cmd("colorscheme gruvbox")
+gruvbox.load()
 
