@@ -12,7 +12,6 @@ M.setup = function()
       "yamlls",      -- yaml
       "vimls",       -- vim
       "jsonls",      -- json
-      "sqlls",       -- sql
     }
   }
   require("mason-lspconfig").setup_handlers({
