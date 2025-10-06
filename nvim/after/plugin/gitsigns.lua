@@ -6,20 +6,39 @@ end
 gitsigns.setup {
     numhl = false,
     linehl = false,
-    keymaps = {
-      -- Default keymap options
-      noremap = true,
-      buffer = true,
-
-      ['n ]g'] = { expr = true, "&diff ? ']c' : '<cmd>lua require\"gitsigns.actions\".next_hunk()<CR>'"},
-      ['n [g'] = { expr = true, "&diff ? '[c' : '<cmd>lua require\"gitsigns.actions\".prev_hunk()<CR>'"},
-
-      ['n ghu'] = '<cmd>lua require"gitsigns".reset_hunk()<CR>',
-      ['n ghp'] = '<cmd>lua require"gitsigns".preview_hunk()<CR>',
-
-    },
     current_line_blame = true,
     current_line_blame_opts = {
       delay = 0
-    }
+    },
+    on_attach = function(bufnr)
+      local gitsigns = require('gitsigns')
+
+      local function map(mode, l, r, opts)
+        opts = opts or {}
+        opts.buffer = bufnr
+        vim.keymap.set(mode, l, r, opts)
+      end
+
+      -- Navigation
+      map('n', ']g', function()
+        if vim.wo.diff then
+          vim.cmd.normal({']c', bang = true})
+        else
+          gitsigns.nav_hunk('next')
+        end
+      end)
+
+      map('n', '[g', function()
+        if vim.wo.diff then
+          vim.cmd.normal({'[c', bang = true})
+        else
+          gitsigns.nav_hunk('prev')
+        end
+      end)
+
+      -- Actions
+      map('n', 'ghs', gitsigns.stage_hunk)
+      map('n', 'ghu', gitsigns.reset_hunk)
+      map('n', 'ghp', gitsigns.preview_hunk)
+  end
 }
